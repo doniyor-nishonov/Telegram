@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c2dceba-649a-41c3-8f27-32559a8d9a1c" name="Changes" comment="Project updated" />
+    <list default="true" id="6c2dceba-649a-41c3-8f27-32559a8d9a1c" name="Changes" comment="Project updated">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/message/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/message/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/message/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/message/MessageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/message/MessageRepositoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/message/MessageRepositoryImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/message/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/message/MessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/message/MessageServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/message/MessageServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/user/UserView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/frontend/user/UserView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/utils/MenuUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/frontend/utils/MenuUtils.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,7 +72,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Hp/Desktop/PlusLuxyCopy&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Hp/Desktop/WorkSysteamB30&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -167,7 +176,11 @@
       <workItem from="1712720213136" duration="288000" />
       <workItem from="1712720721699" duration="317000" />
       <workItem from="1712721881281" duration="79000" />
-      <workItem from="1712722213206" duration="833000" />
+      <workItem from="1712722213206" duration="3845000" />
+      <workItem from="1712732561557" duration="43000" />
+      <workItem from="1712732623716" duration="135000" />
+      <workItem from="1712732777624" duration="586000" />
+      <workItem from="1712733414218" duration="3273000" />
     </task>
     <task id="LOCAL-00001" summary="Project added">
       <option name="closed" value="true" />

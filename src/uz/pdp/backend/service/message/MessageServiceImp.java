@@ -49,4 +49,10 @@ public class MessageServiceImp implements MessageService {
     public List<Message> getMessageAll(List<Chat> chats,String userId) {
         return messageRepository.getMessageAll(chats,userId);
     }
+
+    @Override
+    public List<Message> getMyMessage(List<Chat> myChats, String id) {
+        return messageRepository.getMyMessage(myChats,id);
+    }
+
 }

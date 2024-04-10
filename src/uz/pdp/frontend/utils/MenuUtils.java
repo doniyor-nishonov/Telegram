@@ -9,7 +9,7 @@ public interface MenuUtils {
             """;
     String USER = """
                                         ---Menu---
-            1.Search  2.Channels  3.My Channels  4.Group  5. My Group  0.Back
+            1.Search  2.MyChats  3.Channels  4.My Channels  5.Group  6.My Group  0.Back
             """;
     String CHANNEL = """
                     ---Menu---

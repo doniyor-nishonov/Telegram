@@ -28,16 +28,21 @@ public class UserView {
         while (true) {
             switch (menu(USER)) {
                 case 1 -> search();
-                case 2 -> channels();
-                case 3 -> myChannels();
-                case 4 -> group();
-                case 5 -> myGroup();
+                case 2 -> myChats();
+                case 3 -> channels();
+                case 4 -> myChannels();
+                case 5 -> group();
+                case 6 -> myGroup();
                 case 0 -> {
                     return;
                 }
                 default -> System.out.println(RED + "Invalid choice!" + STOP);
             }
         }
+    }
+
+    private static void myChats() {
+
     }
 
     private static void myGroup() {
@@ -79,8 +84,18 @@ public class UserView {
     }
 
     private static void updateMessage(User user) {
-        /*List<Chat> myChats = chatService.getMyChats(curUser.getId(),user.getId());
-        List<Message>*/
+        List<Chat> myChats = chatService.getMyChats(curUser.getId(),user.getId());
+        List<Message> messageAll = messageService.getMyMessage(myChats, curUser.getId());
+        for (int i = 0; i < messageAll.size(); i++)
+            System.out.println((i+1)+". " + messageAll.get(i));
+        int index = inputInt("Choose")-1;
+        if(index<0 || index>=myChats.size())
+            return;
+        Message message = messageAll.get(index);
+        String newMessage = inputStr("New Message");
+        message.setText(newMessage);
+        boolean update = messageService.update(message.getId(), message);
+        notificationMessage("Message","edit",update);
     }
 
     private static void deleteMessage(User user) {

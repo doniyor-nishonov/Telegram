@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface MessageService extends BaseService<Message> {
     List<Message> getMessageAll(List<Chat> chats,String userId);
+
+    List<Message> getMyMessage(List<Chat> myChats, String id);
 }

@@ -78,6 +78,19 @@ public class MessageRepositoryImp implements MessageRepository{
     public Message get(String id) {
         return list.stream().filter((m)->Objects.equals(m.getId(),id))
                 .findFirst().orElse(null);
+    }
 
+    @Override
+    public List<Message> getMyMessage(List<Chat> chats, String id) {
+        List<Message> messages = new ArrayList<>();
+        for (Message message : list) {
+            String chatId = message.getChatId();
+            for (Chat chat : chats) {
+                if(Objects.equals(chatId,chat.getId())&&Objects.equals(chat.getId1(),id)){
+                    messages.add(message);
+                }
+            }
+        }
+        return messages;
     }
 }

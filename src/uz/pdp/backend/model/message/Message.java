@@ -55,7 +55,7 @@ public class Message extends BaseModel {
 
     @Override
     public String toString() {
-        String s = state ? "✔✔" : "✔";
+        String s = state ? "@@" : "@";
         String time = getTime().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 
         return """
