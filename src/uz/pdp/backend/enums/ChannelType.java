@@ -1,6 +1,6 @@
 package uz.pdp.backend.enums;
 
-public enum Type {
+public enum ChannelType {
     PRIVATE,
     PUBLIC
 }

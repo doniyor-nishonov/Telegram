@@ -6,9 +6,19 @@ import uz.pdp.backend.repository.user.UserRepository;
 import uz.pdp.backend.repository.user.UserRepositoryImp;
 
 import java.util.List;
+import java.util.Objects;
 
 public class UserServiceImp implements UserService{
-    private final UserRepository userRepository = new UserRepositoryImp();
+    private final UserRepository userRepository = UserRepositoryImp.getInstance();
+    private static UserService userService;
+    public static UserService getInstance() {
+        if(Objects.isNull(userService))
+            userService = new UserServiceImp();
+        return userService;
+    }
+    private UserServiceImp() {
+    }
+
     @Override
     public boolean add(User user) {
         return userRepository.add(user);
@@ -44,13 +54,4 @@ public class UserServiceImp implements UserService{
         return userRepository.findByUsername(username);
     }
 
-    @Override
-    public boolean block(String userId) {
-        return userRepository.block(userId);
-    }
-
-    @Override
-    public boolean unBlock(String userId) {
-        return userRepository.unBlock(userId);
-    }
 }

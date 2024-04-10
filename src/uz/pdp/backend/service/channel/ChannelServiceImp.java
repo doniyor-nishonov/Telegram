@@ -5,10 +5,19 @@ import uz.pdp.backend.repository.channel.ChannelRepository;
 import uz.pdp.backend.repository.channel.ChannelRepositoryImp;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ChannelServiceImp implements ChannelService{
-    private final ChannelRepository channelRepository = new ChannelRepositoryImp();
+    private final ChannelRepository channelRepository = ChannelRepositoryImp.getInstance();
+    private static ChannelService channelService;
 
+    public static ChannelService getInstance() {
+        if(Objects.isNull(channelService))
+            channelService = new ChannelServiceImp();
+        return channelService;
+    }
+    private ChannelServiceImp() {
+    }
     @Override
     public List<Channel> getChannelByUser(String userId) {
         return channelRepository.getChannelByUser(userId);

@@ -1,4 +1,4 @@
-package uz.pdp.frontend;
+package uz.pdp.frontend.utils;
 
 import java.util.List;
 import java.util.Objects;
@@ -31,24 +31,7 @@ public interface Utils {
         String color = isWorked ? GREEN : RED;
         System.out.println(color + objName + message + action + STOP);
     }
-    String MENU = """
-                    ---Menu---
-            1.Sign in 2.Sign up 0.Exit
-            """;
-    String ADMIN_MENU = """
-            ---Admin Menu---
-            1.
-            """;
-    String USER_MENU = """
-                                     ---User Menu---
-            1.Search  2.My Chats  3.Block  4.UnBlock  5.Channels  5.My Channels  0.Exit
-            """;
-    String CHANNEL_MENU = """
-            1.Search 2.Subscript 0.Exit
-            """;
-    String MyCHANNEL_MENU = """
-            1.Post  2.Delete  3.Edit 0.Back
-            """;
+
     String STOP = "\u001B[0m";
     String BLACK = "\u001B[30m";
     String RED = "\u001B[31m";

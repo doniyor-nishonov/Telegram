@@ -1,44 +1,66 @@
 package uz.pdp.backend.model.message;
 
+import uz.pdp.backend.enums.MessageType;
 import uz.pdp.backend.model.BaseModel;
 
-public class Message extends BaseModel {
-    private String senderId;
-    private String text;
-    private String chatId;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
-    public Message(String senderId, String text, String chatId) {
-        this.senderId = senderId;
+public class Message extends BaseModel {
+    private String text;
+    private final String chatId;
+    private boolean state;
+    private final LocalTime time;
+    private MessageType type;
+
+    public Message(String text, String chatId, MessageType type) {
         this.text = text;
         this.chatId = chatId;
-    }
-
-    public String getSenderId() {
-        return senderId;
-    }
-
-    public void setSenderId(String senderId) {
-        this.senderId = senderId;
-    }
-
-    public String getText() {
-        return text;
+        this.state = false;
+        this.time = LocalTime.now();
+        this.type = type;
     }
 
     public void setText(String text) {
         this.text = text;
     }
 
+    public void setState(boolean state) {
+        this.state = state;
+    }
+
+    public void setType(MessageType type) {
+        this.type = type;
+    }
+
+    public String getText() {
+        return text;
+    }
+
     public String getChatId() {
         return chatId;
     }
 
-    public void setChatId(String chatId) {
-        this.chatId = chatId;
+    public boolean isState() {
+        return state;
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public MessageType getType() {
+        return type;
     }
 
     @Override
     public String toString() {
-        return text;
+        String s = state ? "✔✔" : "✔";
+        String time = getTime().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+        return """
+                %s%s
+                        %s
+                """.formatted(text, s, time);
     }
 }

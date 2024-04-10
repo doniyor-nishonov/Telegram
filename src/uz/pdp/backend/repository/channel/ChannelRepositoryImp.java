@@ -1,6 +1,8 @@
 package uz.pdp.backend.repository.channel;
 
+import uz.pdp.backend.io.ObjectWriterReader;
 import uz.pdp.backend.model.channel.Channel;
+import uz.pdp.backend.model.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +12,17 @@ import java.util.stream.Collectors;
 
 public class ChannelRepositoryImp implements ChannelRepository{
     private List<Channel> list;
+    private final String filePath = "db/channels.txt";
+    private final ObjectWriterReader<Channel> owr = new ObjectWriterReader<>(filePath);
+    private static ChannelRepository channelRepository;
 
-    public ChannelRepositoryImp() {
-        this.list = new ArrayList<>();
+    public static ChannelRepository getInstance() {
+        if(Objects.isNull(channelRepository))
+            channelRepository  = new ChannelRepositoryImp();
+        return channelRepository;
+    }
+    private ChannelRepositoryImp() {
+        list = owr.readObjects();
     }
 
     @Override
@@ -28,12 +38,16 @@ public class ChannelRepositoryImp implements ChannelRepository{
         boolean b = list.stream().anyMatch(ch -> Objects.equals(ch.getName(), channel.getName()));
         if(b) return false;
         list.add(channel);
+        owr.writeObjects(list);
         return true;
     }
 
     @Override
     public boolean delete(String id) {
-        return list.removeIf((channel)-> Objects.equals(channel.getId(),id));
+        boolean removed = list.removeIf((channel) -> Objects.equals(channel.getId(), id));
+        if(removed)
+            owr.writeObjects(list);
+        return removed;
     }
 
     @Override
@@ -42,6 +56,7 @@ public class ChannelRepositoryImp implements ChannelRepository{
             Channel ch = list.get(i);
             if (Objects.equals(ch.getId(), id)) {
                 list.set(i, newChannel);
+                owr.writeObjects(list);
                 return true;
             }
         }

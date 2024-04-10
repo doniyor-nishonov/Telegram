@@ -1,65 +1,48 @@
 package uz.pdp.backend.repository.user;
 
 import uz.pdp.backend.DTO.LoginDTO;
-import uz.pdp.backend.io.ObjectReader;
-import uz.pdp.backend.io.ObjectWriter;
+import uz.pdp.backend.io.ObjectWriterReader;
 import uz.pdp.backend.model.user.User;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class UserRepositoryImp implements UserRepository {
     private final List<User> list;
     private final String filePath = "db/users.txt";
-    private final ObjectReader<User> objectReader;
-    private final ObjectWriter<User> objectWriter;
+    private final ObjectWriterReader<User> owr = new ObjectWriterReader<>(filePath);
+    private static UserRepository userRepository;
 
-    public UserRepositoryImp() {
-        objectReader = new ObjectReader<>(filePath);
-        objectWriter = new ObjectWriter<>(filePath);
-        list = objectReader.readObjects();
+    public static UserRepository getInstance() {
+        if(Objects.isNull(userRepository))
+            userRepository = new UserRepositoryImp();
+        return userRepository;
     }
-
-    /*{
-        list.add(new User("Doniyor", "d", "d"));
-        list.add(new User("Mansur", "m", "m"));
-        list.add(new User("Sardor", "s", "s"));
-        list.add(new User("Javlon", "j", "j"));
-        list.add(new User("Ali", "a", "a"));
+    private UserRepositoryImp() {
+        list = owr.readObjects();
     }
-*/
     @Override
     public User signIn(LoginDTO dto) {
         return list.stream()
-                .filter((l) -> Objects.equals(dto.username(), l.getUsername())
+                .filter((l) -> Objects.equals(dto.username(), l.getUserName())
                         && Objects.equals(dto.password(), l.getPassword()))
                 .findFirst().orElse(null);
     }
 
     @Override
     public User findByUsername(String username) {
-        return list.stream().filter((u) -> Objects.equals(u.getUsername(), username))
+        return list.stream().filter((u) -> Objects.equals(u.getUserName(), username))
                 .findFirst().orElse(null);
     }
 
-    @Override
-    public boolean block(String userId) {
-        return false;
-    }
-
-    @Override
-    public boolean unBlock(String userId) {
-        return false;
-    }
 
     @Override
     public boolean add(User user) {
-        boolean b = list.stream().anyMatch((u) -> Objects.equals(u.getUsername(), user.getUsername()));
+        boolean b = list.stream().anyMatch((u) -> Objects.equals(u.getUserName(), user.getUserName()));
         if (b)
             return false;
         list.add(user);
-        objectWriter.writeObjects(list);
+        owr.writeObjects(list);
         return true;
     }
 
@@ -67,7 +50,7 @@ public class UserRepositoryImp implements UserRepository {
     public boolean delete(String id) {
         boolean removeIf = list.removeIf((u) -> Objects.equals(u.getId(), id));
         if (removeIf) {
-            objectWriter.writeObjects(list);
+            owr.writeObjects(list);
         }
         return removeIf;
     }

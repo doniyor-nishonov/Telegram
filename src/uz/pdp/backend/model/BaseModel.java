@@ -1,8 +1,9 @@
 package uz.pdp.backend.model;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public abstract class BaseModel {
+public abstract class BaseModel implements Serializable {
     private String id;
 
     public BaseModel() {

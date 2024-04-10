@@ -2,18 +2,16 @@ package uz.pdp.backend.model.user;
 
 import uz.pdp.backend.model.BaseModel;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-import static uz.pdp.frontend.Utils.*;
-
-public class User extends BaseModel implements Serializable {
+public class User extends BaseModel {
     private String name;
-    private String username;
+    private String userName;
     private String password;
-    public User(String name, String username, String password) {
+
+    public User(String name, String userName, String password) {
         this.name = name;
-        this.username = username;
+        this.userName = userName;
         this.password = password;
     }
 
@@ -25,12 +23,12 @@ public class User extends BaseModel implements Serializable {
         this.name = name;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -46,18 +44,20 @@ public class User extends BaseModel implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(name, user.name) && Objects.equals(username, user.username) && Objects.equals(password, user.password);
+        return Objects.equals(name, user.name) && Objects.equals(userName, user.userName) && Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, username, password);
+        return Objects.hash(name, userName, password);
     }
 
     @Override
     public String toString() {
-        return  GREEN + "Name->         " + STOP + name + "\n" +
-                GREEN + "Username->     " + STOP + username + "\n" +
-                GREEN + "Password->     " + STOP + password;
+        return """
+                 Name:     %s\s
+                 UserName: %s
+                 Password: %s
+                \s""".formatted(name, userName, password);
     }
 }

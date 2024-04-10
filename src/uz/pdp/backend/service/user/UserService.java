@@ -7,6 +7,4 @@ import uz.pdp.backend.service.BaseService;
 public interface UserService extends BaseService<User> {
     User signIn(LoginDTO dto);
     User findByUsername(String username);
-    boolean block(String userId);
-    boolean unBlock(String userId);
 }

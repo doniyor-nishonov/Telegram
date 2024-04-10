@@ -4,10 +4,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ObjectReader<T> {
+public class ObjectWriterReader<T> {
     private final String filePath;
 
-    public ObjectReader(String filePath) {
+    public ObjectWriterReader(String filePath) {
         this.filePath = filePath;
     }
 
@@ -21,5 +21,13 @@ public class ObjectReader<T> {
         } catch (IOException | ClassNotFoundException exception) {}
         return objects;
     }
+    public void writeObjects(List<T> list) {
+        File file = new File(filePath);
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file))) {
+            for (T item : list) {
+                objectOutputStream.writeObject(item);
+            }
+        } catch (IOException ignored) {
+        }
+    }
 }
-

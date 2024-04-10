@@ -7,6 +7,4 @@ import uz.pdp.backend.repository.BaseRepository;
 public interface UserRepository extends BaseRepository<User> {
     User signIn(LoginDTO dto);
     User findByUsername(String username);
-    boolean block(String userId);
-    boolean unBlock(String userId);
 }

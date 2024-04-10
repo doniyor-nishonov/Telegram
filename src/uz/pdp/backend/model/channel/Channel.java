@@ -1,25 +1,25 @@
 package uz.pdp.backend.model.channel;
 
-import uz.pdp.backend.enums.Type;
+import uz.pdp.backend.enums.ChannelType;
 import uz.pdp.backend.model.BaseModel;
 
 public class Channel extends BaseModel {
     private String name;
     private String userId;
-    private Type type;
+    private ChannelType channelType;
 
-    public Channel(String name, String userId, Type type) {
+    public Channel(String name, String userId, ChannelType channelType) {
         this.name = name;
         this.userId = userId;
-        this.type = type;
+        this.channelType = channelType;
     }
 
-    public Type getType() {
-        return type;
+    public ChannelType getType() {
+        return channelType;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setType(ChannelType channelType) {
+        this.channelType = channelType;
     }
 
     public String getName() {

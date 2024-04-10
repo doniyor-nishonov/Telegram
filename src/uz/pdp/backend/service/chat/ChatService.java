@@ -8,4 +8,6 @@ import java.util.List;
 public interface ChatService extends BaseService<Chat> {
 
     List<Chat> getUsersAllChats(String id1, String id2);
+
+    List<Chat> getMyChats(String id, String id1);
 }

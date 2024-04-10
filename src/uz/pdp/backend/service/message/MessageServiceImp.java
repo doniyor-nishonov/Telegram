@@ -6,9 +6,19 @@ import uz.pdp.backend.repository.message.MessageRepository;
 import uz.pdp.backend.repository.message.MessageRepositoryImp;
 
 import java.util.List;
+import java.util.Objects;
 
 public class MessageServiceImp implements MessageService {
-    private final MessageRepository messageRepository = new MessageRepositoryImp();
+    private final MessageRepository messageRepository = MessageRepositoryImp.getInstance();
+    private static MessageService messageService;
+
+    public static MessageService getInstance() {
+        if(Objects.isNull(messageService))
+            messageService = new MessageServiceImp();
+        return messageService;
+    }
+    private MessageServiceImp() {
+    }
 
     @Override
     public boolean add(Message message) {
@@ -36,7 +46,7 @@ public class MessageServiceImp implements MessageService {
     }
 
     @Override
-    public List<Message> getMessageAll(List<Chat> chats) {
-        return messageRepository.getMessageAll(chats);
+    public List<Message> getMessageAll(List<Chat> chats,String userId) {
+        return messageRepository.getMessageAll(chats,userId);
     }
 }

@@ -8,4 +8,5 @@ import java.util.List;
 public interface ChatRepository extends BaseRepository<Chat> {
     List<Chat> getUsersAllChats(String id1, String id2);
 
+    List<Chat> getMyChats(String id, String id1);
 }

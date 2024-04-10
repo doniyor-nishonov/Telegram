@@ -2,11 +2,11 @@ package uz.pdp.backend.model.subscript;
 
 import uz.pdp.backend.model.BaseModel;
 
-public class Subscript extends BaseModel {
+public class Subscribe extends BaseModel {
     private String userId;
     private String channelId;
 
-    public Subscript(String userId, String channelId) {
+    public Subscribe(String userId, String channelId) {
         this.userId = userId;
         this.channelId = channelId;
     }

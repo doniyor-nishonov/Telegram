@@ -5,9 +5,18 @@ import uz.pdp.backend.repository.chat.ChatRepository;
 import uz.pdp.backend.repository.chat.ChatRepositoryImp;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ChatServiceImp implements ChatService{
-    private final ChatRepository chatRepository = new ChatRepositoryImp();
+    private final ChatRepository chatRepository = ChatRepositoryImp.getInstance();
+    private static ChatService chatService;
+
+    public static ChatService getInstance() {
+        if(Objects.isNull(chatService))
+            chatService = new ChatServiceImp();
+        return chatService;
+    }
+    private ChatServiceImp() {}
     @Override
     public boolean add(Chat chat) {
         return chatRepository.add(chat);
@@ -36,5 +45,10 @@ public class ChatServiceImp implements ChatService{
     @Override
     public List<Chat> getUsersAllChats(String id1, String id2) {
         return chatRepository.getUsersAllChats(id1, id2);
+    }
+
+    @Override
+    public List<Chat> getMyChats(String id, String id1) {
+        return chatRepository.getMyChats(id,id1);
     }
 }

@@ -5,7 +5,69 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c2dceba-649a-41c3-8f27-32559a8d9a1c" name="Changes" comment="Project added">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/channels.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/chats.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/groups.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/message.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/posts.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/subscribes.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/userGroups.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/enums/MessageType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/io/ObjectWriterReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/group/Group.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/userGroup/UserGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/group/GroupRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/group/GroupRepositoryImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/userGroup/UserGroupRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/userGroup/UserGroupRepositoryImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/group/GroupService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/group/GroupServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/userGroup/UserGroupService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/userGroup/UserGroupServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/frontend/login/LoginView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/frontend/user/UserView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/frontend/utils/MenuUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/users.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/enums/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/enums/ChannelType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/io/ObjectReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/io/ObjectWriter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/BaseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/BaseModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/channel/Channel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/channel/Channel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/chat/Chat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/message/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/message/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/subscript/Subscript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/subscript/Subscribe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/channel/ChannelRepositoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/channel/ChannelRepositoryImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/chat/ChatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/chat/ChatRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/chat/ChatRepositoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/chat/ChatRepositoryImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/message/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/message/MessageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/message/MessageRepositoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/message/MessageRepositoryImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/post/PostRepositoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/post/PostRepositoryImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/subscript/SubscriptRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/subscript/SubscribeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/subscript/SubscriptRepositoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/subscript/SubscribeRepositoryImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/user/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/user/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/user/UserRepositoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/user/UserRepositoryImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/channel/ChannelServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/channel/ChannelServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/chat/ChatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/chat/ChatService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/chat/ChatServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/chat/ChatServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/message/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/message/MessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/message/MessageServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/message/MessageServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/post/PostServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/post/PostServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/subscript/SubscriptService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/subscript/SubscriptService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/subscript/SubscriptServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/subscript/SubscriptServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/user/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/user/UserServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/user/UserServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/frontend/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/channel/ChannelController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/chat/ChatController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/message/MessageController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/post/PostController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/subscript/SubscriptController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/frontend/ui/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/user/UserController.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,18 +87,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "doniyor-nishonov"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;doniyor-nishonov&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/doniyor-nishonov/Telegram.git",
-    "accountId": "c134886c-fbdf-4914-8a24-50fd9248f74c"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/doniyor-nishonov/Telegram.git&quot;,
+    &quot;accountId&quot;: &quot;c134886c-fbdf-4914-8a24-50fd9248f74c&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/uz/pdp/frontend/user/UserController.java" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -54,23 +116,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.TEst.executor": "Run",
-    "Application.UI.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Hp/Desktop/PlusLuxyCopy",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Message.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TEst.executor&quot;: &quot;Run&quot;,
+    &quot;Application.UI.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Hp/Desktop/PlusLuxyCopy&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="uz.pdp.backend.DTO" />
@@ -157,6 +222,16 @@
       <workItem from="1712571131864" duration="1202000" />
       <workItem from="1712572376585" duration="199000" />
       <workItem from="1712572584068" duration="1090000" />
+      <workItem from="1712587062779" duration="530000" />
+      <workItem from="1712589949271" duration="32000" />
+      <workItem from="1712590017394" duration="149000" />
+      <workItem from="1712590185150" duration="714000" />
+      <workItem from="1712591439888" duration="3250000" />
+      <workItem from="1712650705336" duration="10757000" />
+      <workItem from="1712720213136" duration="288000" />
+      <workItem from="1712720721699" duration="317000" />
+      <workItem from="1712721881281" duration="79000" />
+      <workItem from="1712722213206" duration="468000" />
     </task>
     <task id="LOCAL-00001" summary="Project added">
       <option name="closed" value="true" />

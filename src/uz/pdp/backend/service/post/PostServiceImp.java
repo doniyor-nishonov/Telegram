@@ -5,9 +5,19 @@ import uz.pdp.backend.repository.post.PostRepository;
 import uz.pdp.backend.repository.post.PostRepositoryImp;
 
 import java.util.List;
+import java.util.Objects;
 
 public class PostServiceImp implements PostService{
-    private final PostRepository postRepository = new PostRepositoryImp();
+    private final PostRepository postRepository = PostRepositoryImp.getInstance();
+    private static PostService postService;
+    public static PostService getInstance() {
+        if(Objects.isNull(postService))
+            postService = new PostServiceImp();
+        return postService;
+    }
+    private PostServiceImp() {
+    }
+
     @Override
     public boolean add(Post post) {
         return postRepository.add(post);
