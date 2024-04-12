@@ -6,6 +6,7 @@ import uz.pdp.backend.repository.chat.ChatRepositoryImp;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class ChatServiceImp implements ChatService{
     private final ChatRepository chatRepository = ChatRepositoryImp.getInstance();
@@ -50,5 +51,10 @@ public class ChatServiceImp implements ChatService{
     @Override
     public List<Chat> getMyChats(String id, String id1) {
         return chatRepository.getMyChats(id,id1);
+    }
+
+    @Override
+    public Set<String> getUserChats(String id) {
+        return chatRepository.getUserChats(id);
     }
 }

@@ -10,7 +10,7 @@ public class ObjectWriterReader<T> {
     public ObjectWriterReader(String filePath) {
         this.filePath = filePath;
     }
-
+    @SuppressWarnings("unchecked")
     public List<T> readObjects() {
         List<T> objects = new ArrayList<>();
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath))) {
@@ -18,7 +18,7 @@ public class ObjectWriterReader<T> {
                 T object = (T) objectInputStream.readObject();
                 objects.add(object);
             }
-        } catch (IOException | ClassNotFoundException exception) {}
+        } catch (IOException | ClassNotFoundException ignored) {}
         return objects;
     }
     public void writeObjects(List<T> list) {

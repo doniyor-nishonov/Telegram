@@ -42,4 +42,9 @@ public class PostServiceImp implements PostService{
     public Post get(String id) {
         return postRepository.get(id);
     }
+
+    @Override
+    public List<Post> getPostChannels(String channelId) {
+        return postRepository.getPostChannels(channelId);
+    }
 }

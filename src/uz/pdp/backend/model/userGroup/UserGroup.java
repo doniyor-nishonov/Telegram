@@ -2,7 +2,6 @@ package uz.pdp.backend.model.userGroup;
 
 import uz.pdp.backend.model.BaseModel;
 
-import java.io.Serializable;
 
 public class UserGroup extends BaseModel {
     private final String userId;

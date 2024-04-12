@@ -2,11 +2,11 @@ package uz.pdp.backend.repository.post;
 
 import uz.pdp.backend.io.ObjectWriterReader;
 import uz.pdp.backend.model.post.Post;
-import uz.pdp.backend.model.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class PostRepositoryImp implements PostRepository {
     private final List<Post> list;
@@ -19,13 +19,14 @@ public class PostRepositoryImp implements PostRepository {
             postRepository = new PostRepositoryImp();
         return postRepository;
     }
+
     private PostRepositoryImp() {
         list = owr.readObjects();
     }
 
     @Override
     public boolean add(Post post) {
-        if(Objects.isNull(post))
+        if (Objects.isNull(post))
             return false;
         list.add(post);
         owr.writeObjects(list);
@@ -35,7 +36,7 @@ public class PostRepositoryImp implements PostRepository {
     @Override
     public boolean delete(String id) {
         boolean removed = list.removeIf((post) -> Objects.equals(post.getId(), id));
-        if(removed)
+        if (removed)
             owr.writeObjects(list);
         return removed;
     }
@@ -59,7 +60,15 @@ public class PostRepositoryImp implements PostRepository {
 
     @Override
     public Post get(String id) {
-        return list.stream().filter((p)->Objects.equals(p.getId(),id))
+        return list.stream().filter((p) -> Objects.equals(p.getId(), id))
                 .findFirst().orElse(null);
     }
+
+    @Override
+    public List<Post> getPostChannels(String channelId) {
+        return list.stream()
+                .filter(post -> Objects.equals(post.getChannelId(), channelId))
+                .collect(Collectors.toList());
+    }
+
 }

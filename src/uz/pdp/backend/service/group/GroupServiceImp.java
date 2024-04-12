@@ -40,4 +40,9 @@ public class GroupServiceImp implements GroupService{
     public Group get(String id) {
         return groupRepository.get(id);
     }
+
+    @Override
+    public List<Group> findByName(String name) {
+        return groupRepository.findByName(name);
+    }
 }

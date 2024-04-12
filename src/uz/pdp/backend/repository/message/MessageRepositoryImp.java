@@ -8,17 +8,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MessageRepositoryImp implements MessageRepository{
-    private List<Message> list;
+public class MessageRepositoryImp implements MessageRepository {
+    private final List<Message> list;
     private final String filePath = "db/message.txt";
     private final ObjectWriterReader<Message> owr = new ObjectWriterReader<>(filePath);
     private static MessageRepository messageRepository;
 
     public static MessageRepository getInstance() {
-        if(Objects.isNull(messageRepository))
+        if (Objects.isNull(messageRepository))
             messageRepository = new MessageRepositoryImp();
         return messageRepository;
     }
+
     private MessageRepositoryImp() {
         list = owr.readObjects();
     }
@@ -35,7 +36,7 @@ public class MessageRepositoryImp implements MessageRepository{
     @Override
     public boolean delete(String id) {
         boolean removed = list.removeIf((m) -> Objects.equals(m.getId(), id));
-        if(removed)
+        if (removed)
             owr.writeObjects(list);
         return removed;
     }
@@ -58,25 +59,24 @@ public class MessageRepositoryImp implements MessageRepository{
     }
 
     @Override
-    public List<Message> getMessageAll(List<Chat> chats,String userId) {
+    public List<Message> getMessageAll(List<Chat> chats, String userId) {
         List<Message> messages = new ArrayList<>();
-        for (Message message : list){
-            String chatId = message.getChatId();
-            for (Chat chat : chats) {
-                if(Objects.equals(chatId,chat.getId())
-                        && Objects.equals(chat.getId2(),userId)){
-                    message.setState(true);
+        for (Chat chat : chats) {
+            for (Message message : list) {
+                if (Objects.equals(message.getChatId(), chat.getId())) {
+                    if (Objects.equals(chat.getId2(), userId))
+                        message.setState(true);
+                    messages.add(message);
                 }
             }
-            messages.add(message);
         }
-        owr.writeObjects(messages);
+        owr.writeObjects(list);
         return messages;
     }
 
     @Override
     public Message get(String id) {
-        return list.stream().filter((m)->Objects.equals(m.getId(),id))
+        return list.stream().filter((m) -> Objects.equals(m.getId(), id))
                 .findFirst().orElse(null);
     }
 
@@ -86,7 +86,7 @@ public class MessageRepositoryImp implements MessageRepository{
         for (Message message : list) {
             String chatId = message.getChatId();
             for (Chat chat : chats) {
-                if(Objects.equals(chatId,chat.getId())&&Objects.equals(chat.getId1(),id)){
+                if (Objects.equals(chatId, chat.getId()) && Objects.equals(chat.getId1(), id)) {
                     messages.add(message);
                 }
             }

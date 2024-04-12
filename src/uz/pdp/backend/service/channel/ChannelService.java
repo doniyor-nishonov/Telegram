@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ChannelService extends BaseService<Channel> {
     List<Channel> getChannelByUser(String userId);
+
+    List<Channel> findWithName(String name);
 }

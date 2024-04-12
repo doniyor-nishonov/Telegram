@@ -41,7 +41,7 @@ public class Message extends BaseModel {
         return chatId;
     }
 
-    public boolean isState() {
+    public boolean getState() {
         return state;
     }
 

@@ -2,10 +2,10 @@ package uz.pdp.backend.repository.group;
 
 import uz.pdp.backend.io.ObjectWriterReader;
 import uz.pdp.backend.model.group.Group;
-import uz.pdp.backend.model.user.User;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class GroupRepositoryImp implements GroupRepository {
     private final List<Group> list;
@@ -61,5 +61,12 @@ public class GroupRepositoryImp implements GroupRepository {
     @Override
     public Group get(String id) {
         return list.stream().filter((g) -> Objects.equals(g.getId(), id)).findFirst().orElse(null);
+    }
+
+    @Override
+    public List<Group> findByName(String name) {
+        return list.stream()
+                .filter(group -> group.getName().toLowerCase().contains(name.toLowerCase()))
+                .collect(Collectors.toList());
     }
 }

@@ -1,4 +1,4 @@
-package uz.pdp.frontend.login;
+package uz.pdp.frontend.view.login;
 
 import uz.pdp.backend.DTO.LoginDTO;
 import uz.pdp.backend.model.user.User;
@@ -9,8 +9,7 @@ import java.util.Objects;
 
 import static uz.pdp.frontend.ui.UI.curUser;
 import static uz.pdp.frontend.utils.Utils.*;
-import static uz.pdp.frontend.ui.UI.*;
-import static uz.pdp.frontend.user.UserView.*;
+import static uz.pdp.frontend.view.user.UserView.*;
 
 public class LoginView {
     private static final UserService userService = UserServiceImp.getInstance();
@@ -22,7 +21,7 @@ public class LoginView {
         notificationMessage("User", "login", isWorked);
         if (!isWorked)
             return;
-        System.out.println(GREEN + "\nUser information\n" + STOP + curUser + "\n");
+        System.out.println(GREEN + "\nWelcome " + STOP + curUser.getName() + "\n");
         userProfile();
     }
 

@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ChannelRepository extends BaseRepository<Channel> {
     List<Channel> getChannelByUser(String userId);
+
+    List<Channel> findWithName(String name);
 }

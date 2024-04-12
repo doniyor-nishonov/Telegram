@@ -4,7 +4,7 @@ import uz.pdp.backend.model.BaseModel;
 
 public class Post extends BaseModel {
     private String title;
-    private String channelId;
+    private final String channelId;
 
     public Post(String title, String channelId) {
         this.title = title;

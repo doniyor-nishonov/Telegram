@@ -3,11 +3,14 @@ package uz.pdp.backend.repository.subscript;
 import uz.pdp.backend.io.ObjectWriterReader;
 import uz.pdp.backend.model.subscript.Subscribe;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class SubscribeRepositoryImp implements SubscribeRepository {
-    private List<Subscribe> list;
+    private final List<Subscribe> list;
     private final String filePath = "db/subscribes.txt";
     private final ObjectWriterReader<Subscribe> owr = new ObjectWriterReader<>(filePath);
     private static SubscribeRepository subscribeRepository;
@@ -60,5 +63,12 @@ public class SubscribeRepositoryImp implements SubscribeRepository {
     public Subscribe get(String id) {
         return list.stream().filter((s)->Objects.equals(s.getId(),id))
                 .findFirst().orElse(null);
+    }
+
+    @Override
+    public List<Subscribe> getUserSubscribes(String userId) {
+        return list.stream()
+                .filter(s -> Objects.equals(s.getUserId(), userId))
+                .collect(Collectors.toList());
     }
 }

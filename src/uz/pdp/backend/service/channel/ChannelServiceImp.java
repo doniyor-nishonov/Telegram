@@ -46,4 +46,9 @@ public class ChannelServiceImp implements ChannelService{
     public Channel get(String id) {
         return channelRepository.get(id);
     }
+
+    @Override
+    public List<Channel> findWithName(String name) {
+        return channelRepository.findWithName(name);
+    }
 }

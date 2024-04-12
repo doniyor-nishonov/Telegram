@@ -4,12 +4,14 @@ import uz.pdp.backend.io.ObjectWriterReader;
 import uz.pdp.backend.model.chat.Chat;
 
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ChatRepositoryImp implements ChatRepository {
-    private List<Chat> list;
+    private final List<Chat> list;
 
     private final String filePath = "db/chats.txt";
     private final ObjectWriterReader<Chat> owr = new ObjectWriterReader<>(filePath);
@@ -76,5 +78,14 @@ public class ChatRepositoryImp implements ChatRepository {
     public List<Chat> getMyChats(String id, String id1) {
         return list.stream().filter((c) -> Objects.equals(c.getId1(), id) && Objects.equals(c.getId2(), id1))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Set<String> getUserChats(String id) {
+        Set<String> chats = new HashSet<>();
+        for (Chat chat : list)
+            if(Objects.equals(chat.getId2(), id))
+                chats.add(chat.getId1());
+        return chats;
     }
 }

@@ -5,14 +5,20 @@ import uz.pdp.backend.repository.subscript.SubscribeRepository;
 import uz.pdp.backend.repository.subscript.SubscribeRepositoryImp;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
-public class SubscriptServiceImp implements SubscriptService {
+public class SubscribeServiceImp implements SubscribeService {
     private final SubscribeRepository subscribeRepository = SubscribeRepositoryImp.getInstance();
-    private static SubscriptService subscriptService;
-    private SubscriptServiceImp() {
+    private static SubscribeService subscribeService;
+    private SubscribeServiceImp() {
     }
-
+    public static SubscribeService getInstance(){
+        if(Objects.isNull(subscribeService)){
+            subscribeService = new SubscribeServiceImp();
+        }
+        return subscribeService;
+    }
     @Override
     public boolean add(Subscribe subscribe) {
         return subscribeRepository.add(subscribe);
@@ -37,10 +43,9 @@ public class SubscriptServiceImp implements SubscriptService {
     public  Subscribe get(String id) {
         return subscribeRepository.get(id);
     }
-    public static SubscriptService getInstance(){
-        if(Objects.isNull(subscriptService)){
-            subscriptService = new SubscriptServiceImp();
-        }
-        return subscriptService;
+
+    @Override
+    public List<Subscribe> getUserSubscribes(String id) {
+        return subscribeRepository.getUserSubscribes(id);
     }
 }

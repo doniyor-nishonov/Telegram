@@ -1,17 +1,15 @@
 package uz.pdp.backend.repository.channel;
 
+import uz.pdp.backend.enums.ChannelType;
 import uz.pdp.backend.io.ObjectWriterReader;
 import uz.pdp.backend.model.channel.Channel;
-import uz.pdp.backend.model.user.User;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ChannelRepositoryImp implements ChannelRepository{
-    private List<Channel> list;
+    private final List<Channel> list;
     private final String filePath = "db/channels.txt";
     private final ObjectWriterReader<Channel> owr = new ObjectWriterReader<>(filePath);
     private static ChannelRepository channelRepository;
@@ -34,7 +32,7 @@ public class ChannelRepositoryImp implements ChannelRepository{
 
     @Override
     public boolean add(Channel channel) {
-        //anyMatch listni forda aylanib ifda tekshirib chiqadi va true qiymatt chiqganda to'xtaydi
+        //anyMatch listni forda aylanib ifda tekshirib chiqadi va true qiymat chiqganda to'xtaydi
         boolean b = list.stream().anyMatch(ch -> Objects.equals(ch.getName(), channel.getName()));
         if(b) return false;
         list.add(channel);
@@ -72,5 +70,12 @@ public class ChannelRepositoryImp implements ChannelRepository{
     public Channel get(String id) {
         return list.stream().filter((ch)->Objects.equals(ch.getId(),id))
                 .findFirst().orElse(null);
+    }
+
+    @Override
+    public List<Channel> findWithName(String name) {
+        return list.stream().filter((c)->c.getName().toLowerCase().contains(name.toLowerCase())
+                &&Objects.equals(c.getType(), ChannelType.PUBLIC))
+                .collect(Collectors.toList());
     }
 }

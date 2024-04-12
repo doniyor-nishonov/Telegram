@@ -5,7 +5,7 @@ import uz.pdp.backend.model.BaseModel;
 
 public class Channel extends BaseModel {
     private String name;
-    private String userId;
+    private final String userId;
     private ChannelType channelType;
 
     public Channel(String name, String userId, ChannelType channelType) {
