@@ -11,6 +11,7 @@ import uz.pdp.backend.service.userGroup.UserGroupServiceImp;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static uz.pdp.frontend.utils.MenuUtils.*;
 import static uz.pdp.frontend.utils.Utils.*;
@@ -70,10 +71,27 @@ public class GroupView {
     }
 
     private static void leaveGroup() {
-//        userGroupService.delete()
+        List<UserGroup> groups = userGroupService.getUserByGroups(curUser.getId());
+        checkData(groups);
+        if (groups.isEmpty())
+            return;
+        AtomicInteger i = new AtomicInteger();
+        groups.forEach(g -> System.out.printf("%d. %s%n", i.incrementAndGet(), groupService.get(g.getGroupId())));
+        int index = inputInt("Choose") - 1;
+        if (index < 0 || index > groups.size()) {
+            System.out.println(RED + "Invalid choice" + STOP);
+            return;
+        }
+        boolean delete = userGroupService.delete(groups.get(index).getId());
+        notificationMessage("Group", "leaved", delete);
     }
 
     private static void showGroups() {
-
+        List<UserGroup> groups = userGroupService.getUserByGroups(curUser.getId());
+        checkData(groups);
+        if (groups.isEmpty())
+            return;
+        AtomicInteger i = new AtomicInteger();
+        groups.forEach(g -> System.out.printf("%d. %s%n", i.incrementAndGet(), groupService.get(g.getGroupId())));
     }
 }

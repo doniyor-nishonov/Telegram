@@ -16,8 +16,8 @@ public interface MenuUtils {
             1.Create  2.Join  3.Leave  4.Channels  0.Back
             """;
     String MY_CHANNEL = """
-                             ---Menu---
-            1.Post  2.Delete  3.Edit  4.Show Post  0.Back
+                                  ---Menu---
+            1.Post  2.Delete  3.Edit  4.Show Post  5.Subscribes  0.Back
             """;
     String CHAT = """
                                 --Menu--

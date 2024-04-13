@@ -5,6 +5,7 @@ import uz.pdp.backend.model.userGroup.UserGroup;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class UserGroupRepositoryImp implements UserGroupRepository {
     private final List<UserGroup> list;
@@ -33,7 +34,7 @@ public class UserGroupRepositoryImp implements UserGroupRepository {
 
     @Override
     public boolean delete(String id) {
-        boolean removed = list.removeIf((u) -> Objects.equals(u.getUserId(), id));
+        boolean removed = list.removeIf((u) -> Objects.equals(u.getId(), id));
         if(removed)
             owr.writeObjects(list);
         return removed;
@@ -60,5 +61,11 @@ public class UserGroupRepositoryImp implements UserGroupRepository {
     public UserGroup get(String id) {
         return list.stream().filter((u) -> Objects.equals(u.getUserId(), id))
                 .findFirst().orElse(null);
+    }
+
+    @Override
+    public List<UserGroup> getUserByGroups(String id) {
+        return list.stream().filter(u->Objects.equals(u.getUserId(),id))
+                .collect(Collectors.toList());
     }
 }
