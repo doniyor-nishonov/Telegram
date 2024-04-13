@@ -4,10 +4,7 @@ import uz.pdp.backend.io.ObjectWriterReader;
 import uz.pdp.backend.model.chat.Chat;
 
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ChatRepositoryImp implements ChatRepository {
@@ -83,9 +80,24 @@ public class ChatRepositoryImp implements ChatRepository {
     @Override
     public Set<String> getUserChats(String id) {
         Set<String> chats = new HashSet<>();
-        for (Chat chat : list)
-            if(Objects.equals(chat.getId2(), id))
+        for (Chat chat : list) {
+            if (Objects.equals(chat.getId1(), id))
+                chats.add(chat.getId2());
+            else if(Objects.equals(chat.getId2(), id))
                 chats.add(chat.getId1());
+        }
         return chats;
+    }
+
+    @Override
+    public Chat findOrCreate(String id, String id1) {
+        return list.stream().filter((c) -> (Objects.equals(c.getId1(), id) && Objects.equals(c.getId2(), id1))
+                        || (Objects.equals(c.getId2(), id) && Objects.equals(c.getId1(), id1)))
+                .findFirst().orElseGet(() -> {
+                    Chat chat = new Chat(id, id1);
+                    list.add(chat);
+                    owr.writeObjects(list);
+                    return chat;
+                });
     }
 }

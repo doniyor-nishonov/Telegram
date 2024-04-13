@@ -59,15 +59,13 @@ public class MessageRepositoryImp implements MessageRepository {
     }
 
     @Override
-    public List<Message> getMessageAll(List<Chat> chats, String userId) {
+    public List<Message> getMessageAll(Chat chat,String id) {
         List<Message> messages = new ArrayList<>();
-        for (Chat chat : chats) {
-            for (Message message : list) {
-                if (Objects.equals(message.getChatId(), chat.getId())) {
-                    if (Objects.equals(chat.getId2(), userId))
-                        message.setState(true);
-                    messages.add(message);
-                }
+        for (Message message : list) {
+            if (Objects.equals(message.getChatId(), chat.getId())) {
+                if (Objects.equals(message.getSenderId(),id))
+                    message.setState(true);
+                messages.add(message);
             }
         }
         owr.writeObjects(list);
@@ -81,14 +79,11 @@ public class MessageRepositoryImp implements MessageRepository {
     }
 
     @Override
-    public List<Message> getMyMessage(List<Chat> chats, String id) {
+    public List<Message> getMyMessage(Chat chat) {
         List<Message> messages = new ArrayList<>();
         for (Message message : list) {
-            String chatId = message.getChatId();
-            for (Chat chat : chats) {
-                if (Objects.equals(chatId, chat.getId()) && Objects.equals(chat.getId1(), id)) {
-                    messages.add(message);
-                }
+            if (Objects.equals(message.getChatId(), chat.getId()) && Objects.equals(chat.getId2(),message.getSenderId())) {
+                messages.add(message);
             }
         }
         return messages;

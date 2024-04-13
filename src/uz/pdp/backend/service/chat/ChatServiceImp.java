@@ -57,4 +57,9 @@ public class ChatServiceImp implements ChatService{
     public Set<String> getUserChats(String id) {
         return chatRepository.getUserChats(id);
     }
+
+    @Override
+    public Chat findOrCreate(String id, String id1) {
+        return chatRepository.findOrCreate(id,id1);
+    }
 }

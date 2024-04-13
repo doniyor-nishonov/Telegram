@@ -12,4 +12,6 @@ public interface ChatRepository extends BaseRepository<Chat> {
     List<Chat> getMyChats(String id, String id1);
 
     Set<String> getUserChats(String id);
+
+    Chat findOrCreate(String id, String id1);
 }

@@ -46,13 +46,13 @@ public class MessageServiceImp implements MessageService {
     }
 
     @Override
-    public List<Message> getMessageAll(List<Chat> chats,String userId) {
-        return messageRepository.getMessageAll(chats,userId);
+    public List<Message> getMessageAll(Chat chat,String id) {
+        return messageRepository.getMessageAll(chat,id);
     }
 
     @Override
-    public List<Message> getMyMessage(List<Chat> myChats, String id) {
-        return messageRepository.getMyMessage(myChats,id);
+    public List<Message> getMyMessage(Chat chat) {
+        return messageRepository.getMyMessage(chat);
     }
 
 }

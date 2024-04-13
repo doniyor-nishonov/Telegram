@@ -8,17 +8,21 @@ import java.time.format.DateTimeFormatter;
 
 public class Message extends BaseModel {
     private String text;
+    private final String senderId;
     private final String chatId;
     private boolean state;
-    private final LocalTime time;
     private MessageType type;
 
-    public Message(String text, String chatId, MessageType type) {
+    public Message(String text, String senderId, String chatId, MessageType type) {
         this.text = text;
+        this.senderId = senderId;
         this.chatId = chatId;
         this.state = false;
-        this.time = LocalTime.now();
         this.type = type;
+    }
+
+    public String getSenderId() {
+        return senderId;
     }
 
     public void setText(String text) {
@@ -45,22 +49,17 @@ public class Message extends BaseModel {
         return state;
     }
 
-    public LocalTime getTime() {
-        return time;
-    }
-
     public MessageType getType() {
         return type;
     }
 
     @Override
     public String toString() {
-        String s = state ? "@@" : "@";
-        String time = getTime().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-
+        String s = state ? "**" : "*";
+        String time = super.getCreatedAt().format(DateTimeFormatter.ofPattern("HH:mm"));
         return """
                 %s%s
-                        %s
+                                    %s
                 """.formatted(text, s, time);
     }
 }

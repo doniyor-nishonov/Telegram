@@ -31,8 +31,11 @@ public class ChatView {
     public static void myChats() {
         Set<String> usersID = chatService.getUserChats(curUser.getId());
         List<User> users = new ArrayList<>();
-        for (String s : usersID)
-            users.add(userService.get(s));
+        for (String id : usersID) {
+            User user = userService.get(id);
+            if(!Objects.equals(curUser.getId(), user.getId()))
+                users.add(user);
+        }
         checkData(users);
         if (users.isEmpty())
             return;
@@ -76,15 +79,15 @@ public class ChatView {
     }
 
     private static void updateMessage(User user) {
-        List<Chat> myChats = chatService.getMyChats(curUser.getId(), user.getId());
-        List<Message> messageAll = messageService.getMyMessage(myChats, curUser.getId());
+        Chat chat = chatService.findOrCreate(curUser.getId(), user.getId());
+        List<Message> messageAll = messageService.getMyMessage(chat);
         if (messageAll.isEmpty())
             return;
         checkData(messageAll);
         for (int i = 0; i < messageAll.size(); i++)
             System.out.println((i + 1) + ". " + messageAll.get(i));
         int index = inputInt("Choose") - 1;
-        if (index < 0 || index >= myChats.size())
+        if (index < 0 || index >= messageAll.size())
             return;
         Message message = messageAll.get(index);
         String newMessage = inputStr("New Message");
@@ -94,15 +97,15 @@ public class ChatView {
     }
 
     private static void deleteMessage(User user) {
-        List<Chat> myChats = chatService.getMyChats(curUser.getId(), user.getId());
-        List<Message> messageAll = messageService.getMyMessage(myChats, curUser.getId());
+        Chat chat = chatService.findOrCreate(curUser.getId(), user.getId());
+        List<Message> messageAll = messageService.getMyMessage(chat);
         if (messageAll.isEmpty())
             return;
         checkData(messageAll);
         for (int i = 0; i < messageAll.size(); i++)
             System.out.println((i + 1) + ". " + messageAll.get(i));
         int index = inputInt("Choose") - 1;
-        if (index < 0 || index >= myChats.size())
+        if (index < 0 || index >= messageAll.size())
             return;
         String chatId = messageAll.get(index).getChatId();
         chatService.delete(chatId);
@@ -111,38 +114,37 @@ public class ChatView {
     }
 
     private static void showHistory(User user) {
-        List<Chat> chats = chatService.getUsersAllChats(curUser.getId(), user.getId());
-        if (Objects.isNull(chats))
-            return;
-        List<Message> messageAll = messageService.getMessageAll(chats, curUser.getId());
+        Chat chat = chatService.findOrCreate(curUser.getId(), user.getId());
+        List<Message> messageAll = messageService.getMessageAll(chat, curUser.getId());
         if (Objects.isNull(messageAll))
             return;
-        printMessage(messageAll);
+        printMessage(messageAll,user.getId());
     }
 
-    private static void printMessage(List<Message> messageAll) {
+    private static void printMessage(List<Message> messageAll,String userId) {
+        Chat chat = chatService.findOrCreate(curUser.getId(), userId);
         for (Message message : messageAll) {
-            Chat chat = chatService.get(message.getChatId());
-            if (Objects.equals(chat.getId1(), curUser.getId()))
-                System.out.println("            " + message);
+            if (Objects.equals(userId,message.getSenderId()))
+                System.out.println("                    " + message);
             else
                 System.out.printf("""
                         %s
-                            %s
-                        %n""", message.getText(), message.getTime().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+                        %s
+                        %n""", message.getText(), message.getCreatedAt().format(DateTimeFormatter.ofPattern("HH:mm")));
         }
     }
 
     private static void sendMessage(User user) {
-        showHistory(user);
-        String text = inputStr("[0.Back]Enter text");
-        if (Objects.equals(text, "0"))
-            return;
-        Chat chat = new Chat(curUser.getId(), user.getId());
-        chatService.add(chat);
-        Message message = new Message(text, chat.getId(), MessageType.USER);
-        boolean isWorked = messageService.add(message);
-        notificationMessage("Message", "send", isWorked);
+        Chat chat = chatService.findOrCreate(curUser.getId(), user.getId());
+        while (true) {
+            showHistory(user);
+            String text = inputStr("[0.Back]Enter text");
+            if (Objects.equals(text, "0")) {
+                return;
+            }
+            Message message = new Message(text, user.getId(), chat.getId(), MessageType.USER);
+            boolean isWorked = messageService.add(message);
+            notificationMessage("Message", "send", isWorked);
+        }
     }
-
 }

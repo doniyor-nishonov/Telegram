@@ -1,11 +1,10 @@
 package uz.pdp.backend.service.subscript;
 
-import uz.pdp.backend.model.subscript.Subscribe;
+import uz.pdp.backend.model.subscribe.Subscribe;
 import uz.pdp.backend.repository.subscript.SubscribeRepository;
 import uz.pdp.backend.repository.subscript.SubscribeRepositoryImp;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 public class SubscribeServiceImp implements SubscribeService {

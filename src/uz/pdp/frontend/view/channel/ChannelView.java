@@ -3,7 +3,7 @@ package uz.pdp.frontend.view.channel;
 import uz.pdp.backend.enums.ChannelType;
 import uz.pdp.backend.model.channel.Channel;
 import uz.pdp.backend.model.post.Post;
-import uz.pdp.backend.model.subscript.Subscribe;
+import uz.pdp.backend.model.subscribe.Subscribe;
 import uz.pdp.backend.service.channel.ChannelService;
 import uz.pdp.backend.service.channel.ChannelServiceImp;
 import uz.pdp.backend.service.post.PostService;
@@ -162,7 +162,7 @@ public class ChannelView {
             return;
         }
         Channel channel = channels.get(index);
-        if (Objects.equals(channel.getUserId(), curUser.getId())) {
+        if (Objects.equals(channel.getOwnerId(), curUser.getId())) {
             System.out.println(RED + "This channel is yours" + STOP);
             return;
         }

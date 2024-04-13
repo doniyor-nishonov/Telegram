@@ -7,7 +7,7 @@ import uz.pdp.backend.repository.BaseRepository;
 import java.util.List;
 
 public interface MessageRepository extends BaseRepository<Message> {
-    List<Message> getMessageAll(List<Chat> chats,String userId);
+    List<Message> getMessageAll(Chat chat,String id);
 
-    List<Message> getMyMessage(List<Chat> myChats, String id);
+    List<Message> getMyMessage(Chat chat);
 }

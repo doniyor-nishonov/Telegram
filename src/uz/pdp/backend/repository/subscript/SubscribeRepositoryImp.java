@@ -1,11 +1,9 @@
 package uz.pdp.backend.repository.subscript;
 
 import uz.pdp.backend.io.ObjectWriterReader;
-import uz.pdp.backend.model.subscript.Subscribe;
+import uz.pdp.backend.model.subscribe.Subscribe;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 

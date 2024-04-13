@@ -7,7 +7,7 @@ import uz.pdp.backend.service.BaseService;
 import java.util.List;
 
 public interface MessageService extends BaseService<Message> {
-    List<Message> getMessageAll(List<Chat> chats,String userId);
+    List<Message> getMessageAll(Chat chat,String id);
 
-    List<Message> getMyMessage(List<Chat> myChats, String id);
+    List<Message> getMyMessage(Chat chat);
 }

@@ -5,12 +5,12 @@ import uz.pdp.backend.model.BaseModel;
 
 public class Channel extends BaseModel {
     private String name;
-    private final String userId;
+    private final String ownerId;
     private ChannelType channelType;
 
-    public Channel(String name, String userId, ChannelType channelType) {
+    public Channel(String name, String ownerId, ChannelType channelType) {
         this.name = name;
-        this.userId = userId;
+        this.ownerId = ownerId;
         this.channelType = channelType;
     }
 
@@ -30,8 +30,8 @@ public class Channel extends BaseModel {
         this.name = name;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getOwnerId() {
+        return ownerId;
     }
 
     @Override

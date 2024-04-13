@@ -26,7 +26,7 @@ public class ChannelRepositoryImp implements ChannelRepository{
     @Override
     public List<Channel> getChannelByUser(String userId) {
         return list.stream()
-                .filter((channel)-> Objects.equals(channel.getUserId(),userId))
+                .filter((channel)-> Objects.equals(channel.getOwnerId(),userId))
                 .collect(Collectors.toList());
     }
 

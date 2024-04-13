@@ -1,15 +1,27 @@
 package uz.pdp.backend.model.userGroup;
 
+import uz.pdp.backend.enums.Role;
 import uz.pdp.backend.model.BaseModel;
 
 
 public class UserGroup extends BaseModel {
     private final String userId;
     private final String groupId;
+    private Role role;
     public UserGroup(String userId, String groupId) {
         this.userId = userId;
         this.groupId = groupId;
+        this.role = Role.USER;
     }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     public String getUserId() {
         return userId;
     }

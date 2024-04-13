@@ -13,4 +13,6 @@ public interface ChatService extends BaseService<Chat> {
     List<Chat> getMyChats(String id, String id1);
 
     Set<String> getUserChats(String id);
+
+    Chat findOrCreate(String id, String id1);
 }

@@ -1,6 +1,6 @@
 package uz.pdp.backend.service.subscript;
 
-import uz.pdp.backend.model.subscript.Subscribe;
+import uz.pdp.backend.model.subscribe.Subscribe;
 import uz.pdp.backend.service.BaseService;
 
 import java.util.List;
