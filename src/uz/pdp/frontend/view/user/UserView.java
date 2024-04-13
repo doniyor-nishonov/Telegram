@@ -8,6 +8,7 @@ import static uz.pdp.frontend.view.group.GroupView.*;
 public class UserView {
     public static void userProfile() {
         while (true) {
+            System.out.println("Hello world");
             switch (menu(USER)) {
                 case 1 -> search();
                 case 2 -> myChats();
