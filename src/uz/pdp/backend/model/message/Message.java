@@ -3,7 +3,6 @@ package uz.pdp.backend.model.message;
 import uz.pdp.backend.enums.MessageType;
 import uz.pdp.backend.model.BaseModel;
 
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class Message extends BaseModel {

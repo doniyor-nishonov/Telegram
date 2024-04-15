@@ -1,33 +1,33 @@
-package uz.pdp.backend.repository.userGroup;
+package uz.pdp.backend.repository.members;
 
 import uz.pdp.backend.io.ObjectWriterReader;
-import uz.pdp.backend.model.userGroup.UserGroup;
+import uz.pdp.backend.model.member.Member;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class UserGroupRepositoryImp implements UserGroupRepository {
-    private final List<UserGroup> list;
+public class MembersRepositoryImp implements MembersRepository {
+    private final List<Member> list;
     private final String filePath = "db/userGroups.txt";
-    private final ObjectWriterReader<UserGroup> owr = new ObjectWriterReader<>(filePath);
-    private static UserGroupRepository userGroupRepository;
+    private final ObjectWriterReader<Member> owr = new ObjectWriterReader<>(filePath);
+    private static MembersRepository membersRepository;
 
-    public static UserGroupRepository getInstance() {
-        if(Objects.isNull(userGroupRepository))
-            userGroupRepository = new UserGroupRepositoryImp();
-        return userGroupRepository;
+    public static MembersRepository getInstance() {
+        if(Objects.isNull(membersRepository))
+            membersRepository = new MembersRepositoryImp();
+        return membersRepository;
     }
-    private UserGroupRepositoryImp() {
+    private MembersRepositoryImp() {
         list = owr.readObjects();
     }
     @Override
-    public boolean add(UserGroup userGroup) {
-        boolean match = list.stream().anyMatch((u) -> Objects.equals(u.getUserId(), userGroup.getUserId())
-                && Objects.equals(u.getGroupId(), userGroup.getGroupId()));
+    public boolean add(Member member) {
+        boolean match = list.stream().anyMatch((u) -> Objects.equals(u.getUserId(), member.getUserId())
+                && Objects.equals(u.getGroupId(), member.getGroupId()));
         if (match)
             return false;
-        list.add(userGroup);
+        list.add(member);
         owr.writeObjects(list);
         return true;
     }
@@ -41,7 +41,7 @@ public class UserGroupRepositoryImp implements UserGroupRepository {
     }
 
     @Override
-    public boolean update(String id, UserGroup newE) {
+    public boolean update(String id, Member newE) {
         for (int i = 0; i < list.size(); i++) {
             if(Objects.equals(list.get(i).getUserId(), id)){
                 list.set(i, newE);
@@ -53,24 +53,24 @@ public class UserGroupRepositoryImp implements UserGroupRepository {
     }
 
     @Override
-    public List<UserGroup> getAll() {
+    public List<Member> getAll() {
         return list;
     }
 
     @Override
-    public UserGroup get(String id) {
+    public Member get(String id) {
         return list.stream().filter((u) -> Objects.equals(u.getUserId(), id))
                 .findFirst().orElse(null);
     }
 
     @Override
-    public List<UserGroup> getUserByGroups(String id) {
+    public List<Member> getUserByGroups(String id) {
         return list.stream().filter(u->Objects.equals(u.getUserId(),id))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<UserGroup> getMembers(String groupId) {
+    public List<Member> getMembers(String groupId) {
         return list.stream().filter(m->Objects.equals(m.getGroupId(),groupId))
                 .collect(Collectors.toList());
     }

@@ -1,4 +1,4 @@
-package uz.pdp.backend.service.subscript;
+package uz.pdp.backend.service.subscribe;
 
 import uz.pdp.backend.model.subscribe.Subscribe;
 import uz.pdp.backend.repository.subscript.SubscribeRepository;

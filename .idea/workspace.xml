@@ -5,6 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c2dceba-649a-41c3-8f27-32559a8d9a1c" name="Changes" comment="Project changed">
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/channel/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/chat/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/group/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/member/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/message/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/post/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/subscribe/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/user/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/channel/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/chat/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/group/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/members/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/message/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/post/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/subscript/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/user/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/channel/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/chat/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/group/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/member/MemberService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/member/MemberServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/member/readm.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/message/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Telegram.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Telegram.iml" afterDir="false" />
@@ -16,20 +39,23 @@
       <change beforePath="$PROJECT_DIR$/db/subscribes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/subscribes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/userGroups.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/userGroups.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/users.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/userGroup/UserGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/userGroup/UserGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/message/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/message/MessageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/enums/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/enums/MessageType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/chat/Chat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/message/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/message/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/userGroup/UserGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/member/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/chat/ChatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/chat/ChatRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/chat/ChatRepositoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/chat/ChatRepositoryImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/message/MessageRepositoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/message/MessageRepositoryImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/userGroup/UserGroupRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/userGroup/UserGroupRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/userGroup/UserGroupRepositoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/userGroup/UserGroupRepositoryImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/message/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/message/MessageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/message/MessageServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/message/MessageServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/userGroup/UserGroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/userGroup/UserGroupService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/userGroup/UserGroupServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/userGroup/UserGroupServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/utils/MenuUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/frontend/utils/MenuUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/post/PostRepositoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/post/PostRepositoryImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/userGroup/UserGroupRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/members/MembersRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/userGroup/UserGroupRepositoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/members/MembersRepositoryImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/chat/ChatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/chat/ChatService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/chat/ChatServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/chat/ChatServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/userGroup/UserGroupService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/userGroup/UserGroupServiceImp.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/view/chat/ChatView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/frontend/view/chat/ChatView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/view/group/GroupView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/frontend/view/group/GroupView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/view/login/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/frontend/view/login/LoginView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/view/user/UserView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/frontend/view/user/UserView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +111,7 @@
     &quot;Application.Message.executor&quot;: &quot;Run&quot;,
     &quot;Application.TEst.executor&quot;: &quot;Run&quot;,
     &quot;Application.UI.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
     &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
     &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
     &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
@@ -95,12 +121,15 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/pdp/g40/modul2/online_Shops&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Hp/Desktop/unirest-objectmapper-jackson-4.2.9.jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -114,6 +143,9 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="uz.pdp.backend.enums" />
       <recent name="uz.pdp.backend.DTO" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\pdp\ultimate\g40\projects\Telegram\src\uz\pdp\backend\repository\members" />
     </key>
   </component>
   <component name="RunManager">
@@ -234,6 +266,10 @@
       <workItem from="1713082628267" duration="4890000" />
       <workItem from="1713101202389" duration="979000" />
       <workItem from="1713102858433" duration="263000" />
+      <workItem from="1713153950134" duration="699000" />
+      <workItem from="1713154851236" duration="2366000" />
+      <workItem from="1713159265281" duration="5604000" />
+      <workItem from="1713168451649" duration="2023000" />
     </task>
     <task id="LOCAL-00001" summary="Project added">
       <option name="closed" value="true" />
@@ -267,7 +303,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712994920168</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Project changed">
+      <option name="closed" value="true" />
+      <created>1713154127022</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713154127023</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

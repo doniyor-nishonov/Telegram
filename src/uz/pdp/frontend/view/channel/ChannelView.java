@@ -8,8 +8,8 @@ import uz.pdp.backend.service.channel.ChannelService;
 import uz.pdp.backend.service.channel.ChannelServiceImp;
 import uz.pdp.backend.service.post.PostService;
 import uz.pdp.backend.service.post.PostServiceImp;
-import uz.pdp.backend.service.subscript.SubscribeService;
-import uz.pdp.backend.service.subscript.SubscribeServiceImp;
+import uz.pdp.backend.service.subscribe.SubscribeService;
+import uz.pdp.backend.service.subscribe.SubscribeServiceImp;
 
 import java.util.List;
 import java.util.Objects;

@@ -1,12 +1,13 @@
 package uz.pdp.backend.service.chat;
 
+import uz.pdp.backend.enums.MessageType;
 import uz.pdp.backend.model.chat.Chat;
 import uz.pdp.backend.repository.chat.ChatRepository;
 import uz.pdp.backend.repository.chat.ChatRepositoryImp;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
+
 
 public class ChatServiceImp implements ChatService{
     private final ChatRepository chatRepository = ChatRepositoryImp.getInstance();
@@ -44,22 +45,12 @@ public class ChatServiceImp implements ChatService{
     }
 
     @Override
-    public List<Chat> getUsersAllChats(String id1, String id2) {
-        return chatRepository.getUsersAllChats(id1, id2);
-    }
-
-    @Override
-    public List<Chat> getMyChats(String id, String id1) {
-        return chatRepository.getMyChats(id,id1);
-    }
-
-    @Override
-    public Set<String> getUserChats(String id) {
+    public List<String> getUserChats(String id) {
         return chatRepository.getUserChats(id);
     }
 
     @Override
-    public Chat findOrCreate(String id, String id1) {
-        return chatRepository.findOrCreate(id,id1);
+    public Chat findOrCreate(String id, String id1, MessageType type) {
+        return chatRepository.findOrCreate(id,id1,type);
     }
 }

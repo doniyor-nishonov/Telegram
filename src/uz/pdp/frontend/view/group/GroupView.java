@@ -4,7 +4,7 @@ import uz.pdp.backend.enums.MessageType;
 import uz.pdp.backend.model.chat.Chat;
 import uz.pdp.backend.model.group.Group;
 import uz.pdp.backend.model.message.Message;
-import uz.pdp.backend.model.userGroup.UserGroup;
+import uz.pdp.backend.model.member.Member;
 import uz.pdp.backend.service.chat.ChatService;
 import uz.pdp.backend.service.chat.ChatServiceImp;
 import uz.pdp.backend.service.group.GroupService;
@@ -13,8 +13,8 @@ import uz.pdp.backend.service.message.MessageService;
 import uz.pdp.backend.service.message.MessageServiceImp;
 import uz.pdp.backend.service.user.UserService;
 import uz.pdp.backend.service.user.UserServiceImp;
-import uz.pdp.backend.service.userGroup.UserGroupService;
-import uz.pdp.backend.service.userGroup.UserGroupServiceImp;
+import uz.pdp.backend.service.member.MemberService;
+import uz.pdp.backend.service.member.MemberServiceImp;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -24,10 +24,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static uz.pdp.frontend.utils.MenuUtils.*;
 import static uz.pdp.frontend.utils.Utils.*;
 import static uz.pdp.frontend.ui.UI.*;
+import static uz.pdp.frontend.view.chat.ChatView.chatMessage;
 
 public class GroupView {
     private static final GroupService groupService = GroupServiceImp.getInstance();
-    private static final UserGroupService userGroupService = UserGroupServiceImp.getInstance();
+    private static final MemberService MEMEBER_SERVICE = MemberServiceImp.getInstance();
     private static final ChatService chatService = ChatServiceImp.getInstance();
     private static final MessageService messageService = MessageServiceImp.getInstance();
     private static final UserService userService = UserServiceImp.getInstance();
@@ -56,7 +57,7 @@ public class GroupView {
         String name = inputStr("Name");
         Group group = new Group(curUser.getId(), name);
         boolean isWorked = groupService.add(group);
-        userGroupService.add(new UserGroup(curUser.getId(), group.getId()));
+        MEMEBER_SERVICE.add(new Member(curUser.getId(), group.getId()));
         notificationMessage("Group", "created", isWorked);
     }
 
@@ -78,14 +79,14 @@ public class GroupView {
             System.out.println(RED + "You are already subscribed" + STOP);
             return;
         }
-        boolean isWorked = userGroupService.add(new UserGroup(curUser.getId(), group.getId()));
+        boolean isWorked = MEMEBER_SERVICE.add(new Member(curUser.getId(), group.getId()));
         if (isWorked)
-            messageService.add(new Message("Joined group", group.getId(), chatService.findOrCreate(curUser.getId(), group.getId()).getId(), MessageType.GROUP));
+            messageService.add(new Message("Joined group", group.getId(), chatService.findOrCreate(curUser.getId(), group.getId(),MessageType.GROUP).getId(), MessageType.GROUP));
         notificationMessage("Group", "joined", isWorked);
     }
 
     private static void leaveGroup() {
-        List<UserGroup> groups = userGroupService.getUserByGroups(curUser.getId());
+        List<Member> groups = MEMEBER_SERVICE.getUserByGroups(curUser.getId());
         checkData(groups);
         if (groups.isEmpty())
             return;
@@ -97,15 +98,15 @@ public class GroupView {
             return;
         }
         String groupId = groups.get(index).getGroupId();
-        boolean delete = userGroupService.delete(groups.get(index).getId());
+        boolean delete = MEMEBER_SERVICE.delete(groups.get(index).getId());
         if (delete)
-            messageService.add(new Message("Left group", groupId, chatService.findOrCreate(curUser.getId(), groupId).getId(), MessageType.GROUP));
+            messageService.add(new Message("Left group", groupId, chatService.findOrCreate(curUser.getId(), groupId,MessageType.GROUP).getId(), MessageType.GROUP));
 
         notificationMessage("Group", "leaved", delete);
     }
 
     private static void showGroups() {
-        List<UserGroup> groups = userGroupService.getUserByGroups(curUser.getId());
+        List<Member> groups = MEMEBER_SERVICE.getUserByGroups(curUser.getId());
         checkData(groups);
         if (groups.isEmpty())
             return;
@@ -115,10 +116,10 @@ public class GroupView {
         if (index < 0 || index > groups.size())
             return;
         String groupId = groups.get(index).getGroupId();
-        message(groupId);
+        GroupMessage(groupId);
     }
 
-    private static void message(String groupId) {
+    private static void GroupMessage(String groupId) {
         while (true) {
             int menu = menu(GROUP_CHAT);
             switch (menu) {
@@ -135,7 +136,7 @@ public class GroupView {
     }
 
     private static void send(String groupId) {
-        Chat chat = chatService.findOrCreate(curUser.getId(), groupId);
+        Chat chat = chatService.findOrCreate(curUser.getId(), groupId,MessageType.GROUP);
         while (true) {
             showHistory(groupId);
             String text = inputStr("[0.Back]  Text");
@@ -148,14 +149,14 @@ public class GroupView {
     }
 
     private static void update(String groupId) {
-        String chatId = chatService.findOrCreate(curUser.getId(), groupId).getId();
+        String chatId = chatService.findOrCreate(curUser.getId(), groupId,MessageType.GROUP).getId();
         List<Message> messages = messageService.getByGroupMyMessages(chatId, groupId);
-        if(messages.isEmpty()) return;
+        if (messages.isEmpty()) return;
         AtomicInteger i = new AtomicInteger();
-        messages.forEach(m-> System.out.printf("%d. %s%n", i.incrementAndGet(), m));
+        messages.forEach(m -> System.out.printf("%d. %s%n", i.incrementAndGet(), m));
         int index = inputInt("Choose") - 1;
-        if (index < 0 || index > messages.size()){
-            System.out.println(RED+"Invalid choice" + STOP);
+        if (index < 0 || index > messages.size()) {
+            System.out.println(RED + "Invalid choice" + STOP);
             return;
         }
         String newText = inputStr("New text");
@@ -164,14 +165,14 @@ public class GroupView {
     }
 
     private static void delete(String groupId) {
-        String chatId = chatService.findOrCreate(curUser.getId(), groupId).getId();
+        String chatId = chatService.findOrCreate(curUser.getId(), groupId,MessageType.GROUP).getId();
         List<Message> messages = messageService.getByGroupMyMessages(chatId, groupId);
-        if(messages.isEmpty()) return;
+        if (messages.isEmpty()) return;
         AtomicInteger i = new AtomicInteger();
-        messages.forEach(m-> System.out.printf("%d. %s%n", i.incrementAndGet(), m));
+        messages.forEach(m -> System.out.printf("%d. %s%n", i.incrementAndGet(), m));
         int index = inputInt("Choose") - 1;
-        if (index < 0 || index > messages.size()){
-            System.out.println(RED+"Invalid choice" + STOP);
+        if (index < 0 || index > messages.size()) {
+            System.out.println(RED + "Invalid choice" + STOP);
             return;
         }
         boolean isWorked = messageService.delete(messages.get(index).getId());
@@ -179,17 +180,24 @@ public class GroupView {
     }
 
     private static void showHistory(String groupId) {
-        String chatId = chatService.findOrCreate(curUser.getId(), groupId).getId();
+        String chatId = chatService.findOrCreate(curUser.getId(), groupId,MessageType.GROUP).getId();
         List<Message> messages = messageService.getGroupMessage(chatId, groupId);
         if (messages.isEmpty()) return;
         printMessage(messages);
     }
 
     private static void members(String groupId) {
-        List<UserGroup> members = userGroupService.getMembers(groupId);
-        for (UserGroup member : members) {
-
+        List<Member> members = MEMEBER_SERVICE.getMembers(groupId);
+        AtomicInteger i = new AtomicInteger();
+        for (Member member : members)
+            System.out.printf("%d. %s%n", i.incrementAndGet(), userService.get(member.getUserId()).getName());
+        int index = inputInt("Choose") - 1;
+        if (index < 0 || index > members.size()) {
+            System.out.println(RED + "Invalid choice" + STOP);
+            return;
         }
+        String memberId = members.get(index).getUserId();
+        chatMessage(memberId);
     }
 
     private static void printMessage(List<Message> messages) {

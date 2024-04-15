@@ -16,5 +16,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="java-json" level="project" />
+    <orderEntry type="library" name="unirest-objectmapper-jackson-4.2.9" level="project" />
   </component>
 </module>

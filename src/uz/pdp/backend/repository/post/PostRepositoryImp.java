@@ -3,7 +3,6 @@ package uz.pdp.backend.repository.post;
 import uz.pdp.backend.io.ObjectWriterReader;
 import uz.pdp.backend.model.post.Post;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;

@@ -24,7 +24,6 @@ public class LoginView {
             return;
         System.out.println(GREEN + "\nWelcome " + STOP + curUser.getName() + "\n");
         userProfile();
-        curUser = null;
     }
 
     public static void signUp() {

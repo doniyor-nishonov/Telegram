@@ -64,7 +64,7 @@ public class MessageRepositoryImp implements MessageRepository {
     public List<Message> getMessageAll(Chat chat, String id) {
         List<Message> messages = new ArrayList<>();
         for (Message message : list) {
-            if (Objects.equals(message.getChatId(), chat.getId()) && Objects.equals(MessageType.USER, message.getType())) {
+            if (Objects.equals(message.getChatId(), chat.getId()) && Objects.equals(MessageType.CHAT, message.getType())) {
                 if (Objects.equals(message.getSenderId(), id))
                     message.setState(true);
                 messages.add(message);
@@ -86,7 +86,7 @@ public class MessageRepositoryImp implements MessageRepository {
         for (Message message : list) {
             if (Objects.equals(message.getChatId(), chat.getId())
                     && Objects.equals(chat.getId2(), message.getSenderId())
-                    && Objects.equals(MessageType.USER, message.getType())) {
+                    && Objects.equals(MessageType.CHAT, message.getType())) {
                 messages.add(message);
             }
         }

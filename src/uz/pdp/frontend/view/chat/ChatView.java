@@ -15,7 +15,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import static uz.pdp.frontend.ui.UI.curUser;
 import static uz.pdp.frontend.utils.MenuUtils.CHAT;
@@ -29,7 +28,7 @@ public class ChatView {
     private static final MessageService messageService = MessageServiceImp.getInstance();
 
     public static void myChats() {
-        Set<String> usersID = chatService.getUserChats(curUser.getId());
+        List<String> usersID = chatService.getUserChats(curUser.getId());
         List<User> users = new ArrayList<>();
         for (String id : usersID) {
             User user = userService.get(id);
@@ -45,24 +44,24 @@ public class ChatView {
         if (choose < 0 || choose >= users.size())
             return;
         User user = users.get(choose);
-        message(user.getId());
+        chatMessage(user.getId());
     }
 
     public static void search() {
         String userName = inputStr("UserName");
         User user = userService.findByUsername(userName);
         if (Objects.equals(curUser, user)) {
-            System.out.println(RED + "You cannot send a message yourself" + STOP);
+            System.out.println(RED + "You cannot send a chatMessage yourself" + STOP);
             return;
         }
         if (Objects.isNull(user)) {
             System.out.println(RED + "User not found!" + STOP);
             return;
         }
-        message(user.getId());
+        chatMessage(user.getId());
     }
 
-    private static void message(String id) {
+    public static void chatMessage(String id) {
         while (true) {
             System.out.println(GREEN + "User-> " + STOP + userService.get(id).getName() + "\n");
             int menu = menu(CHAT);
@@ -79,7 +78,7 @@ public class ChatView {
     }
 
     private static void updateMessage(String id) {
-        Chat chat = chatService.findOrCreate(curUser.getId(), id);
+        Chat chat = chatService.findOrCreate(curUser.getId(), id,MessageType.CHAT);
         List<Message> messageAll = messageService.getMyMessage(chat);
         if (messageAll.isEmpty())
             return;
@@ -97,7 +96,7 @@ public class ChatView {
     }
 
     private static void deleteMessage(String id) {
-        Chat chat = chatService.findOrCreate(curUser.getId(), id);
+        Chat chat = chatService.findOrCreate(curUser.getId(), id,MessageType.CHAT);
         List<Message> messageAll = messageService.getMyMessage(chat);
         if (messageAll.isEmpty())
             return;
@@ -114,7 +113,7 @@ public class ChatView {
     }
 
     private static void showHistory(String user) {
-        Chat chat = chatService.findOrCreate(curUser.getId(), user);
+        Chat chat = chatService.findOrCreate(curUser.getId(), user,MessageType.CHAT);
         List<Message> messageAll = messageService.getMessageAll(chat, curUser.getId());
         if (Objects.isNull(messageAll))
             return;
@@ -134,14 +133,14 @@ public class ChatView {
     }
 
     private static void sendMessage(String id) {
-        Chat chat = chatService.findOrCreate(curUser.getId(), id);
+        Chat chat = chatService.findOrCreate(curUser.getId(), id,MessageType.CHAT);
         while (true) {
             showHistory(id);
             String text = inputStr("[0.Back]Enter text");
             if (Objects.equals(text, "0")) {
                 return;
             }
-            Message message = new Message(text, id, chat.getId(), MessageType.USER);
+            Message message = new Message(text, id, chat.getId(), MessageType.CHAT);
             boolean isWorked = messageService.add(message);
             notificationMessage("Message", "send", isWorked);
         }

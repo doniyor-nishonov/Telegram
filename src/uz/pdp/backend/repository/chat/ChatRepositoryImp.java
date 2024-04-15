@@ -1,5 +1,6 @@
 package uz.pdp.backend.repository.chat;
 
+import uz.pdp.backend.enums.MessageType;
 import uz.pdp.backend.io.ObjectWriterReader;
 import uz.pdp.backend.model.chat.Chat;
 
@@ -65,36 +66,24 @@ public class ChatRepositoryImp implements ChatRepository {
     }
 
     @Override
-    public List<Chat> getUsersAllChats(String id1, String id2) {
-        return list.stream().filter((ch) -> Objects.equals(ch.getId1(), id1) && Objects.equals(ch.getId2(), id2)
-                        || Objects.equals(ch.getId1(), id2) && Objects.equals(ch.getId2(), id1))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Chat> getMyChats(String id, String id1) {
-        return list.stream().filter((c) -> Objects.equals(c.getId1(), id) && Objects.equals(c.getId2(), id1))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public Set<String> getUserChats(String id) {
-        Set<String> chats = new HashSet<>();
+    public List<String> getUserChats(String id) {
+        List<String> chats = new ArrayList<>();
         for (Chat chat : list) {
-            if (Objects.equals(chat.getId1(), id))
-                chats.add(chat.getId2());
-            else if(Objects.equals(chat.getId2(), id))
-                chats.add(chat.getId1());
+            if (chat.getType() == MessageType.CHAT &&
+                    (Objects.equals(chat.getId1(), id) || Objects.equals(chat.getId2(), id))) {
+                chats.add(Objects.equals(chat.getId1(), id) ? chat.getId2() : chat.getId1());
+            }
         }
         return chats;
     }
 
+
     @Override
-    public Chat findOrCreate(String id, String id1) {
+    public Chat findOrCreate(String id, String id1, MessageType type) {
         return list.stream().filter((c) -> (Objects.equals(c.getId1(), id) && Objects.equals(c.getId2(), id1))
                         || (Objects.equals(c.getId2(), id) && Objects.equals(c.getId1(), id1)))
                 .findFirst().orElseGet(() -> {
-                    Chat chat = new Chat(id, id1);
+                    Chat chat = new Chat(id, id1,type);
                     list.add(chat);
                     owr.writeObjects(list);
                     return chat;
