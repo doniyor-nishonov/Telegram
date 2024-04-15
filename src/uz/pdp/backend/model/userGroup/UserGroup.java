@@ -8,10 +8,21 @@ public class UserGroup extends BaseModel {
     private final String userId;
     private final String groupId;
     private Role role;
+    private boolean status;
+
     public UserGroup(String userId, String groupId) {
         this.userId = userId;
         this.groupId = groupId;
         this.role = Role.USER;
+        this.status = false;
+    }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public Role getRole() {
@@ -25,6 +36,7 @@ public class UserGroup extends BaseModel {
     public String getUserId() {
         return userId;
     }
+
     public String getGroupId() {
         return groupId;
     }

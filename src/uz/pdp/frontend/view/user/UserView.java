@@ -5,6 +5,7 @@ import static uz.pdp.frontend.utils.Utils.*;
 import static uz.pdp.frontend.view.channel.ChannelView.*;
 import static uz.pdp.frontend.view.chat.ChatView.*;
 import static uz.pdp.frontend.view.group.GroupView.*;
+
 public class UserView {
     public static void userProfile() {
         while (true) {

@@ -31,6 +31,10 @@ public interface MenuUtils {
                                 ---Menu---
             1.Send  2.Edit  3.Delete  4.Show  5.ShowUsers  0.Back
             """;
+    String GROUP_CHAT = """
+                                ---Menu---
+            1.Send  2.Edit  3.Delete  4.Members  0.Back
+            """;
 
     static int menu(String menu) {
         System.out.println(menu);

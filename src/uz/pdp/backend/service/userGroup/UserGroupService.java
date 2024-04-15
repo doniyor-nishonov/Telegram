@@ -8,4 +8,6 @@ import java.util.List;
 public interface UserGroupService extends BaseService<UserGroup> {
 
     List<UserGroup> getUserByGroups(String id);
+
+    List<UserGroup> getMembers(String groupId);
 }

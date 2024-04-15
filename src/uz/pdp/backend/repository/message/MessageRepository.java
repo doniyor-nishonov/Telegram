@@ -10,4 +10,8 @@ public interface MessageRepository extends BaseRepository<Message> {
     List<Message> getMessageAll(Chat chat,String id);
 
     List<Message> getMyMessage(Chat chat);
+
+    List<Message> getGroupMessage(String chatId,String groupId);
+
+    List<Message> getByGroupMyMessages(String chatId, String groupId);
 }

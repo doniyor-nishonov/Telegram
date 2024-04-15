@@ -8,4 +8,6 @@ import java.util.List;
 public interface UserGroupRepository extends BaseRepository<UserGroup> {
 
     List<UserGroup> getUserByGroups(String id);
+
+    List<UserGroup> getMembers(String groupId);
 }

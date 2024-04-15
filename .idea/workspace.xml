@@ -4,20 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c2dceba-649a-41c3-8f27-32559a8d9a1c" name="Changes" comment="Project updated">
+    <list default="true" id="6c2dceba-649a-41c3-8f27-32559a8d9a1c" name="Changes" comment="Project changed">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Telegram.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Telegram.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/channels.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/channels.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/chats.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/chats.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/groups.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/groups.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/message.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/posts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/posts.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/subscribes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/subscribes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/userGroups.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/userGroups.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/post/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/post/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/users.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/userGroup/UserGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/userGroup/UserGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/message/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/message/MessageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/message/MessageRepositoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/message/MessageRepositoryImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/userGroup/UserGroupRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/userGroup/UserGroupRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/userGroup/UserGroupRepositoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/userGroup/UserGroupRepositoryImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/message/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/message/MessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/message/MessageServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/message/MessageServiceImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/userGroup/UserGroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/userGroup/UserGroupService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/service/userGroup/UserGroupServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/service/userGroup/UserGroupServiceImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/utils/MenuUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/frontend/utils/MenuUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/view/chat/ChatView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/frontend/view/chat/ChatView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/view/group/GroupView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/frontend/view/group/GroupView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/view/login/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/frontend/view/login/LoginView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uz/pdp/frontend/view/user/UserView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/frontend/view/user/UserView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +85,10 @@
     &quot;Application.Message.executor&quot;: &quot;Run&quot;,
     &quot;Application.TEst.executor&quot;: &quot;Run&quot;,
     &quot;Application.UI.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
@@ -211,7 +227,13 @@
       <workItem from="1712915978310" duration="67000" />
       <workItem from="1712916141310" duration="197000" />
       <workItem from="1712919834668" duration="1635000" />
-      <workItem from="1712983103456" duration="10296000" />
+      <workItem from="1712983103456" duration="10840000" />
+      <workItem from="1713021225946" duration="286000" />
+      <workItem from="1713073366139" duration="4414000" />
+      <workItem from="1713078117065" duration="1651000" />
+      <workItem from="1713082628267" duration="4890000" />
+      <workItem from="1713101202389" duration="979000" />
+      <workItem from="1713102858433" duration="263000" />
     </task>
     <task id="LOCAL-00001" summary="Project added">
       <option name="closed" value="true" />
@@ -237,7 +259,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712914739347</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Project changed">
+      <option name="closed" value="true" />
+      <created>1712994920168</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712994920168</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,7 +287,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Project added" />
     <MESSAGE value="Project updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project updated" />
+    <MESSAGE value="Project changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project changed" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

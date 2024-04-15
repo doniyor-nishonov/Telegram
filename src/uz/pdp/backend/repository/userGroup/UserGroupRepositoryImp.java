@@ -68,4 +68,10 @@ public class UserGroupRepositoryImp implements UserGroupRepository {
         return list.stream().filter(u->Objects.equals(u.getUserId(),id))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<UserGroup> getMembers(String groupId) {
+        return list.stream().filter(m->Objects.equals(m.getGroupId(),groupId))
+                .collect(Collectors.toList());
+    }
 }

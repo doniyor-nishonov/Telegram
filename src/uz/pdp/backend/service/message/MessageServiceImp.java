@@ -55,4 +55,13 @@ public class MessageServiceImp implements MessageService {
         return messageRepository.getMyMessage(chat);
     }
 
+    @Override
+    public List<Message> getGroupMessage(String chatId, String groupId) {
+        return messageRepository.getGroupMessage(chatId,groupId);
+    }
+
+    @Override
+    public List<Message> getByGroupMyMessages(String chatId, String groupId) {
+        return messageRepository.getByGroupMyMessages(chatId,groupId);
+    }
 }

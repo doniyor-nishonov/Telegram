@@ -13,6 +13,7 @@ import static uz.pdp.frontend.view.user.UserView.*;
 
 public class LoginView {
     private static final UserService userService = UserServiceImp.getInstance();
+
     public static void signIn() {
         String userName = inputStr("UserName");
         String password = inputStr("Password");
@@ -23,6 +24,7 @@ public class LoginView {
             return;
         System.out.println(GREEN + "\nWelcome " + STOP + curUser.getName() + "\n");
         userProfile();
+        curUser = null;
     }
 
     public static void signUp() {

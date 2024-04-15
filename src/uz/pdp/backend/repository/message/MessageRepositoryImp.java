@@ -1,5 +1,6 @@
 package uz.pdp.backend.repository.message;
 
+import uz.pdp.backend.enums.MessageType;
 import uz.pdp.backend.io.ObjectWriterReader;
 import uz.pdp.backend.model.chat.Chat;
 import uz.pdp.backend.model.message.Message;
@@ -7,6 +8,7 @@ import uz.pdp.backend.model.message.Message;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class MessageRepositoryImp implements MessageRepository {
     private final List<Message> list;
@@ -59,11 +61,11 @@ public class MessageRepositoryImp implements MessageRepository {
     }
 
     @Override
-    public List<Message> getMessageAll(Chat chat,String id) {
+    public List<Message> getMessageAll(Chat chat, String id) {
         List<Message> messages = new ArrayList<>();
         for (Message message : list) {
-            if (Objects.equals(message.getChatId(), chat.getId())) {
-                if (Objects.equals(message.getSenderId(),id))
+            if (Objects.equals(message.getChatId(), chat.getId()) && Objects.equals(MessageType.USER, message.getType())) {
+                if (Objects.equals(message.getSenderId(), id))
                     message.setState(true);
                 messages.add(message);
             }
@@ -82,10 +84,34 @@ public class MessageRepositoryImp implements MessageRepository {
     public List<Message> getMyMessage(Chat chat) {
         List<Message> messages = new ArrayList<>();
         for (Message message : list) {
-            if (Objects.equals(message.getChatId(), chat.getId()) && Objects.equals(chat.getId2(),message.getSenderId())) {
+            if (Objects.equals(message.getChatId(), chat.getId())
+                    && Objects.equals(chat.getId2(), message.getSenderId())
+                    && Objects.equals(MessageType.USER, message.getType())) {
                 messages.add(message);
             }
         }
         return messages;
+    }
+
+    @Override
+    public List<Message> getGroupMessage(String chatId,String groupId) {
+        List<Message> messages = new ArrayList<>();
+        for (Message message : list) {
+            if (Objects.equals(message.getSenderId(), groupId) && Objects.equals(MessageType.GROUP, message.getType())) {
+                if (!Objects.equals(message.getChatId(),chatId))
+                    message.setState(true);
+                messages.add(message);
+            }
+        }
+        owr.writeObjects(list);
+        return messages;
+    }
+
+    @Override
+    public List<Message> getByGroupMyMessages(String chatId, String groupId) {
+        return list.stream().filter(message->Objects.equals(message.getSenderId(), groupId)
+                && Objects.equals(message.getChatId(), chatId)
+                && Objects.equals(MessageType.GROUP, message.getType()))
+                .collect(Collectors.toList());
     }
 }

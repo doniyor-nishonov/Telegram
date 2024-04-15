@@ -48,4 +48,9 @@ public class UserGroupServiceImp implements UserGroupService {
     public List<UserGroup> getUserByGroups(String id) {
         return userGroupRepository.getUserByGroups(id);
     }
+
+    @Override
+    public List<UserGroup> getMembers(String groupId) {
+        return userGroupRepository.getMembers(groupId);
+    }
 }
