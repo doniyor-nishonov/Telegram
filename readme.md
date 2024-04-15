@@ -1,5 +1,5 @@
 # Telegram Mini Console for GitHub
-# [Admin](https://t.me/+998904275905).
+# [Developer](https://t.me/+998904275905)
 This Java-based console application facilitates GitHub interaction through Telegram, enabling users to perform various GitHub actions directly within their Telegram chat interface. This eliminates the need to navigate the GitHub website or use separate applications.
 
 ## Features
