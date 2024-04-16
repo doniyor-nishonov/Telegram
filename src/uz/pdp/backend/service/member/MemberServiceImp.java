@@ -1,5 +1,6 @@
 package uz.pdp.backend.service.member;
 
+import uz.pdp.backend.model.group.Group;
 import uz.pdp.backend.model.member.Member;
 import uz.pdp.backend.repository.members.MembersRepository;
 import uz.pdp.backend.repository.members.MembersRepositoryImp;
@@ -19,6 +20,7 @@ public class MemberServiceImp implements MemberService {
     private MemberServiceImp() {
     }
 
+
     @Override
     public boolean add(Member member) {
         return membersRepository.add(member);
@@ -30,8 +32,8 @@ public class MemberServiceImp implements MemberService {
     }
 
     @Override
-    public boolean update(String id, Member newE) {
-        return membersRepository.update(id, newE);
+    public boolean update(Member newE) {
+        return membersRepository.update(newE);
     }
 
     @Override
@@ -52,5 +54,10 @@ public class MemberServiceImp implements MemberService {
     @Override
     public List<Member> getMembers(String groupId) {
         return membersRepository.getMembers(groupId);
+    }
+
+    @Override
+    public List<Member> fetchUserGroups(String id) {
+        return membersRepository.fetchUserGroups(id);
     }
 }

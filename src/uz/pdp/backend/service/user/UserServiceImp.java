@@ -30,8 +30,8 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public boolean update(String id, User newE) {
-        return userRepository.update(id,newE);
+    public boolean update(User newE) {
+        return userRepository.update(newE);
     }
 
     @Override

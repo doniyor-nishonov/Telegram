@@ -1,8 +1,8 @@
 package uz.pdp.backend.service.subscribe;
 
 import uz.pdp.backend.model.subscribe.Subscribe;
-import uz.pdp.backend.repository.subscript.SubscribeRepository;
-import uz.pdp.backend.repository.subscript.SubscribeRepositoryImp;
+import uz.pdp.backend.repository.subscribe.SubscribeRepository;
+import uz.pdp.backend.repository.subscribe.SubscribeRepositoryImp;
 
 import java.util.List;
 import java.util.Objects;
@@ -29,8 +29,8 @@ public class SubscribeServiceImp implements SubscribeService {
     }
 
     @Override
-    public boolean update(String id, Subscribe newE) {
-        return subscribeRepository.update(id, newE);
+    public boolean update(Subscribe newE) {
+        return subscribeRepository.update(newE);
     }
 
     @Override
@@ -46,5 +46,15 @@ public class SubscribeServiceImp implements SubscribeService {
     @Override
     public List<Subscribe> getUserSubscribes(String id) {
         return subscribeRepository.getUserSubscribes(id);
+    }
+
+    @Override
+    public List<Subscribe> fetchChannelMembers(String id) {
+        return subscribeRepository.fetchChannelMembers(id);
+    }
+
+    @Override
+    public List<Subscribe> fetchChannelUser(String id) {
+        return subscribeRepository.fetchChannelUser(id);
     }
 }

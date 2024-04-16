@@ -30,8 +30,8 @@ public class ChatServiceImp implements ChatService{
     }
 
     @Override
-    public boolean update(String id, Chat newE) {
-        return chatRepository.update(id,newE);
+    public boolean update(Chat newE) {
+        return chatRepository.update(newE);
     }
 
     @Override

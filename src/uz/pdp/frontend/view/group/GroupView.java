@@ -1,6 +1,7 @@
 package uz.pdp.frontend.view.group;
 
 import uz.pdp.backend.enums.MessageType;
+import uz.pdp.backend.enums.Role;
 import uz.pdp.backend.model.chat.Chat;
 import uz.pdp.backend.model.group.Group;
 import uz.pdp.backend.model.message.Message;
@@ -28,15 +29,135 @@ import static uz.pdp.frontend.view.chat.ChatView.chatMessage;
 
 public class GroupView {
     private static final GroupService groupService = GroupServiceImp.getInstance();
-    private static final MemberService MEMEBER_SERVICE = MemberServiceImp.getInstance();
+    private static final MemberService memberService = MemberServiceImp.getInstance();
     private static final ChatService chatService = ChatServiceImp.getInstance();
     private static final MessageService messageService = MessageServiceImp.getInstance();
     private static final UserService userService = UserServiceImp.getInstance();
 
+    //My Group codes
     public static void myGroup() {
-
+        List<Member> groups = memberService.fetchUserGroups(curUser.getId());
+        checkData(groups);
+        if (groups.isEmpty()) return;
+        AtomicInteger i = new AtomicInteger();
+        groups.forEach(m -> System.out.printf("%d. %s%n", i.incrementAndGet()
+                , groupService.get(m.getGroupId()).getName()));
+        int index = inputInt("Choose") - 1;
+        if (index < 0 || index > groups.size()) {
+            System.out.println(RED + "Invalid choice" + STOP);
+            return;
+        }
+        String groupId = groups.get(index).getGroupId();
+        while (true) {
+            int menu = menu(MY_GROUP);
+            switch (menu) {
+                case 1 -> addAdmin(groupId);
+                case 2 -> deleteAdmin(groupId);
+                case 3 -> blockUser(groupId);
+                case 4 -> unBlockUser(groupId);
+                case 0 -> {
+                    return;
+                }
+                default -> System.out.println(RED + "Invalid choice" + STOP);
+            }
+        }
     }
 
+    private static void addAdmin(String groupId) {
+        List<Member> members = memberService.getMembers(groupId);
+        checkData(members);
+        if (members.isEmpty()) return;
+        AtomicInteger i = new AtomicInteger();
+        members.forEach(m -> System.out.printf("%d. %s%n", i.incrementAndGet(), userService.get(m.getUserId()).getName()));
+        int index = inputInt("Choose") - 1;
+        if (index < 0 || index > members.size()) {
+            System.out.println(RED + "Invalid choice" + STOP);
+            return;
+        }
+        Member member = members.get(index);
+        if (member.getRole() == Role.ADMIN) {
+            System.out.println(RED + "You are already an admin" + STOP);
+            return;
+        }
+        member.setRole(Role.ADMIN);
+        boolean update = memberService.update(member);
+        notificationMessage("Admin", "added", update);
+    }
+
+    private static void deleteAdmin(String groupId) {
+        List<Member> members = memberService.getMembers(groupId);
+        checkData(members);
+        if (members.isEmpty()) return;
+        AtomicInteger i = new AtomicInteger();
+        members.forEach(m -> System.out.printf("%d. %s%n", i.incrementAndGet(), userService.get(m.getUserId()).getName()));
+        int index = inputInt("Choose") - 1;
+        if (index < 0 || index > members.size()) {
+            System.out.println(RED + "Invalid choice" + STOP);
+            return;
+        }
+        Member member = members.get(index);
+        String userId = groupService.get(member.getGroupId()).getUserId();
+        if (Objects.equals(member.getUserId(), userId)) {
+            System.out.println(RED + "Owner cannot be deleted" + STOP);
+            return;
+        }
+        if (member.getRole() == Role.USER) {
+            System.out.println(RED + "You are not already an admin" + STOP);
+            return;
+        }
+        member.setRole(Role.USER);
+        boolean update = memberService.update(member);
+        notificationMessage("Admin", "deleted", update);
+    }
+
+    private static void blockUser(String groupId) {
+        List<Member> members = memberService.getMembers(groupId);
+        checkData(members);
+        if (members.isEmpty()) return;
+        AtomicInteger i = new AtomicInteger();
+        members.forEach(m -> System.out.printf("%d. %s%n", i.incrementAndGet(), userService.get(m.getUserId()).getName()));
+        int index = inputInt("Choose") - 1;
+        if (index < 0 || index > members.size()) {
+            System.out.println(RED + "Invalid choice" + STOP);
+            return;
+        }
+        Member member = members.get(index);
+        String userId = groupService.get(member.getGroupId()).getUserId();
+        if (Objects.equals(member.getUserId(), userId)) {
+            System.out.println(RED + "Owner cannot be blocked" + STOP);
+            return;
+        }
+        if ((member.getRole() == Role.BLOCK)) {
+            System.out.println(RED + "You are already blocked" + STOP);
+            return;
+        }
+        member.setRole(Role.BLOCK);
+        boolean update = memberService.update(member);
+        notificationMessage("User", "blocked", update);
+    }
+
+    private static void unBlockUser(String groupId) {
+        List<Member> members = memberService.getMembers(groupId);
+        checkData(members);
+        if (members.isEmpty()) return;
+        AtomicInteger i = new AtomicInteger();
+        members.forEach(m -> System.out.printf("%d. %s%n", i.incrementAndGet(), userService.get(m.getUserId()).getName()));
+        int index = inputInt("Choose") - 1;
+        if (index < 0 || index > members.size()) {
+            System.out.println(RED + "Invalid choice" + STOP);
+            return;
+        }
+        Member member = members.get(index);
+        if (member.getRole() == Role.ADMIN || member.getRole() == Role.USER) {
+            System.out.println(RED + "You are already unblocked" + STOP);
+            return;
+        }
+        member.setRole(Role.USER);
+        boolean update = memberService.update(member);
+        notificationMessage("Admin", "unblocked", update);
+    }
+
+    ///Group codes
     public static void group() {
         while (true) {
             int menu = menu(GROUP);
@@ -57,7 +178,9 @@ public class GroupView {
         String name = inputStr("Name");
         Group group = new Group(curUser.getId(), name);
         boolean isWorked = groupService.add(group);
-        MEMEBER_SERVICE.add(new Member(curUser.getId(), group.getId()));
+        Member member = new Member(curUser.getId(), group.getId());
+        member.setRole(Role.ADMIN);
+        memberService.add(member);
         notificationMessage("Group", "created", isWorked);
     }
 
@@ -79,14 +202,14 @@ public class GroupView {
             System.out.println(RED + "You are already subscribed" + STOP);
             return;
         }
-        boolean isWorked = MEMEBER_SERVICE.add(new Member(curUser.getId(), group.getId()));
+        boolean isWorked = memberService.add(new Member(curUser.getId(), group.getId()));
         if (isWorked)
-            messageService.add(new Message("Joined group", group.getId(), chatService.findOrCreate(curUser.getId(), group.getId(),MessageType.GROUP).getId(), MessageType.GROUP));
+            messageService.add(new Message("Joined group", group.getId(), chatService.findOrCreate(curUser.getId(), group.getId(), MessageType.GROUP).getId(), MessageType.GROUP));
         notificationMessage("Group", "joined", isWorked);
     }
 
     private static void leaveGroup() {
-        List<Member> groups = MEMEBER_SERVICE.getUserByGroups(curUser.getId());
+        List<Member> groups = memberService.getUserByGroups(curUser.getId());
         checkData(groups);
         if (groups.isEmpty())
             return;
@@ -98,15 +221,15 @@ public class GroupView {
             return;
         }
         String groupId = groups.get(index).getGroupId();
-        boolean delete = MEMEBER_SERVICE.delete(groups.get(index).getId());
+        boolean delete = memberService.delete(groups.get(index).getId());
         if (delete)
-            messageService.add(new Message("Left group", groupId, chatService.findOrCreate(curUser.getId(), groupId,MessageType.GROUP).getId(), MessageType.GROUP));
-
+            messageService.add(new Message("Left group", groupId,
+                    chatService.findOrCreate(curUser.getId(), groupId, MessageType.GROUP).getId(), MessageType.GROUP));
         notificationMessage("Group", "leaved", delete);
     }
 
     private static void showGroups() {
-        List<Member> groups = MEMEBER_SERVICE.getUserByGroups(curUser.getId());
+        List<Member> groups = memberService.getUserByGroups(curUser.getId());
         checkData(groups);
         if (groups.isEmpty())
             return;
@@ -136,7 +259,7 @@ public class GroupView {
     }
 
     private static void send(String groupId) {
-        Chat chat = chatService.findOrCreate(curUser.getId(), groupId,MessageType.GROUP);
+        Chat chat = chatService.findOrCreate(curUser.getId(), groupId, MessageType.GROUP);
         while (true) {
             showHistory(groupId);
             String text = inputStr("[0.Back]  Text");
@@ -149,7 +272,7 @@ public class GroupView {
     }
 
     private static void update(String groupId) {
-        String chatId = chatService.findOrCreate(curUser.getId(), groupId,MessageType.GROUP).getId();
+        String chatId = chatService.findOrCreate(curUser.getId(), groupId, MessageType.GROUP).getId();
         List<Message> messages = messageService.getByGroupMyMessages(chatId, groupId);
         if (messages.isEmpty()) return;
         AtomicInteger i = new AtomicInteger();
@@ -160,12 +283,14 @@ public class GroupView {
             return;
         }
         String newText = inputStr("New text");
-        boolean isWorked = messageService.update(messages.get(index).getId(), new Message(newText, groupId, chatId, MessageType.GROUP));
+        Message message = messages.get(index);
+        message.setText(newText);
+        boolean isWorked = messageService.update(message);
         notificationMessage("Message", "updated", isWorked);
     }
 
     private static void delete(String groupId) {
-        String chatId = chatService.findOrCreate(curUser.getId(), groupId,MessageType.GROUP).getId();
+        String chatId = chatService.findOrCreate(curUser.getId(), groupId, MessageType.GROUP).getId();
         List<Message> messages = messageService.getByGroupMyMessages(chatId, groupId);
         if (messages.isEmpty()) return;
         AtomicInteger i = new AtomicInteger();
@@ -180,14 +305,14 @@ public class GroupView {
     }
 
     private static void showHistory(String groupId) {
-        String chatId = chatService.findOrCreate(curUser.getId(), groupId,MessageType.GROUP).getId();
+        String chatId = chatService.findOrCreate(curUser.getId(), groupId, MessageType.GROUP).getId();
         List<Message> messages = messageService.getGroupMessage(chatId, groupId);
         if (messages.isEmpty()) return;
         printMessage(messages);
     }
 
     private static void members(String groupId) {
-        List<Member> members = MEMEBER_SERVICE.getMembers(groupId);
+        List<Member> members = memberService.getMembers(groupId);
         AtomicInteger i = new AtomicInteger();
         for (Member member : members)
             System.out.printf("%d. %s%n", i.incrementAndGet(), userService.get(member.getUserId()).getName());
@@ -197,6 +322,10 @@ public class GroupView {
             return;
         }
         String memberId = members.get(index).getUserId();
+        if (Objects.equals(curUser.getId(), memberId)) {
+            System.out.println(RED + "You cannot send messages to yourself" + STOP);
+            return;
+        }
         chatMessage(memberId);
     }
 

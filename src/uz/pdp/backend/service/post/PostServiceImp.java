@@ -29,8 +29,8 @@ public class PostServiceImp implements PostService{
     }
 
     @Override
-    public boolean update(String id, Post newE) {
-        return postRepository.update(id, newE);
+    public boolean update(Post newE) {
+        return postRepository.update(newE);
     }
 
     @Override

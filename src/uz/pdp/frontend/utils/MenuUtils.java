@@ -29,7 +29,7 @@ public interface MenuUtils {
             """;
     String MY_GROUP = """
                                 ---Menu---
-            1.Send  2.Edit  3.Delete  4.Show  5.ShowUsers  0.Back
+            1.Add Admin  2.Delete Admin  3.Block User  4.UnBlock User  0.Back
             """;
     String GROUP_CHAT = """
                                 ---Menu---

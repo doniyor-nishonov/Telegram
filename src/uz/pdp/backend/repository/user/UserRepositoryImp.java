@@ -56,10 +56,10 @@ public class UserRepositoryImp implements UserRepository {
     }
 
     @Override
-    public boolean update(String id, User newE) {
-        int index = list.indexOf(get(id));
+    public boolean update(User user) {
+        int index = list.indexOf(get(user.getId()));
         if (index != -1) {
-            list.set(index, newE);
+            list.set(index, user);
             return true;
         }
         return false;

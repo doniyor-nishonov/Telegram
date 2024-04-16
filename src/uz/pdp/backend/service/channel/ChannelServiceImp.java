@@ -33,8 +33,8 @@ public class ChannelServiceImp implements ChannelService{
     }
 
     @Override
-    public boolean update(String id, Channel newE) {
-        return channelRepository.update(id, newE);
+    public boolean update(Channel newE) {
+        return channelRepository.update(newE);
     }
 
     @Override

@@ -1,5 +1,6 @@
-package uz.pdp.backend.repository.subscript;
+package uz.pdp.backend.repository.subscribe;
 
+import uz.pdp.backend.enums.Role;
 import uz.pdp.backend.io.ObjectWriterReader;
 import uz.pdp.backend.model.subscribe.Subscribe;
 
@@ -14,38 +15,39 @@ public class SubscribeRepositoryImp implements SubscribeRepository {
     private static SubscribeRepository subscribeRepository;
 
     public static SubscribeRepository getInstance() {
-        if(Objects.isNull(subscribeRepository))
-            subscribeRepository  = new SubscribeRepositoryImp();
+        if (Objects.isNull(subscribeRepository))
+            subscribeRepository = new SubscribeRepositoryImp();
         return subscribeRepository;
     }
+
     private SubscribeRepositoryImp() {
         list = owr.readObjects();
     }
 
     @Override
     public boolean add(Subscribe subscribe) {
-         if (list.stream().anyMatch((s) -> Objects.equals(s.getChannelId(), subscribe.getChannelId())
+        if (list.stream().anyMatch((s) -> Objects.equals(s.getChannelId(), subscribe.getChannelId())
                 && Objects.equals(s.getUserId(), subscribe.getUserId())))
-             return false;
-         list.add(subscribe);
-         owr.writeObjects(list);
-         return true;
+            return false;
+        list.add(subscribe);
+        owr.writeObjects(list);
+        return true;
 
     }
 
     @Override
     public boolean delete(String id) {
         boolean removed = list.removeIf((s) -> Objects.equals(s.getId(), id));
-        if(removed)
+        if (removed)
             owr.writeObjects(list);
         return removed;
     }
 
     @Override
-    public boolean update(String id, Subscribe newE) {
-        int index = list.indexOf(get(id));
+    public boolean update(Subscribe subscribe) {
+        int index = list.indexOf(get(subscribe.getId()));
         if (index != -1) {
-            list.set(index, newE);
+            list.set(index, subscribe);
             owr.writeObjects(list);
             return true;
         }
@@ -59,14 +61,26 @@ public class SubscribeRepositoryImp implements SubscribeRepository {
 
     @Override
     public Subscribe get(String id) {
-        return list.stream().filter((s)->Objects.equals(s.getId(),id))
+        return list.stream().filter((s) -> Objects.equals(s.getId(), id))
                 .findFirst().orElse(null);
     }
 
     @Override
     public List<Subscribe> getUserSubscribes(String userId) {
         return list.stream()
-                .filter(s -> Objects.equals(s.getUserId(), userId))
+                .filter(s -> !Objects.equals(s.getRole(), Role.BLOCK) && Objects.equals(s.getUserId(), userId))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Subscribe> fetchChannelMembers(String id) {
+        return list.stream().filter(s -> Objects.equals(s.getChannelId(), id))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Subscribe> fetchChannelUser(String id) {
+        return list.stream().filter(s->Objects.equals(s.getRole(),Role.ADMIN)&&Objects.equals(s.getUserId(),id))
                 .collect(Collectors.toList());
     }
 }

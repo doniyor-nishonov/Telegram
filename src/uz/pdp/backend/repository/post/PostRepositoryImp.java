@@ -41,9 +41,9 @@ public class PostRepositoryImp implements PostRepository {
     }
 
     @Override
-    public boolean update(String id, Post post) {
+    public boolean update(Post post) {
         for (int i = 0; i < list.size(); i++) {
-            if (Objects.equals(list.get(i).getId(), id)) {
+            if (Objects.equals(list.get(i).getId(), post.getId())) {
                 list.set(i, post);
                 owr.writeObjects(list);
                 return true;

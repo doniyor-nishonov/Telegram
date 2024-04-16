@@ -42,10 +42,10 @@ public class GroupRepositoryImp implements GroupRepository {
     }
 
     @Override
-    public boolean update(String id, Group newE) {
+    public boolean update(Group group) {
         for (int i = 0; i < list.size(); i++) {
-            if (Objects.equals(list.get(i).getId(), id)) {
-                list.set(i, newE);
+            if (Objects.equals(list.get(i).getId(), group.getId())) {
+                list.set(i, group);
                 owr.writeObjects(list);
                 return true;
             }
@@ -68,5 +68,10 @@ public class GroupRepositoryImp implements GroupRepository {
         return list.stream()
                 .filter(group -> group.getName().toLowerCase().contains(name.toLowerCase()))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Group> fetchUserGroups(String id) {
+        return list.stream().filter((g) -> Objects.equals(g.getUserId(), id)).collect(Collectors.toList());
     }
 }

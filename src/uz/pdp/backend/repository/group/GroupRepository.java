@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface GroupRepository extends BaseRepository<Group> {
     List<Group> findByName(String name);
+
+    List<Group> fetchUserGroups(String id);
 }

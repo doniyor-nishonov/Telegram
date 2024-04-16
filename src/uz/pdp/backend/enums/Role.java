@@ -4,7 +4,8 @@ import static uz.pdp.frontend.utils.Utils.inputInt;
 
 public enum Role {
     USER,
-    ADMIN;
+    ADMIN,
+    BLOCK;
     public static Role choose() {
         int i = 1;
         for (Role value : values())

@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface GroupService extends BaseService<Group> {
     List<Group> findByName(String name);
+
+    List<Group> fetchUserGroups(String id);
 }

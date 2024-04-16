@@ -27,8 +27,8 @@ public class GroupServiceImp implements GroupService{
     }
 
     @Override
-    public boolean update(String id, Group newGroup) {
-        return groupRepository.update(id, newGroup);
+    public boolean update(Group newGroup) {
+        return groupRepository.update(newGroup);
     }
 
     @Override
@@ -44,5 +44,10 @@ public class GroupServiceImp implements GroupService{
     @Override
     public List<Group> findByName(String name) {
         return groupRepository.findByName(name);
+    }
+
+    @Override
+    public List<Group> fetchUserGroups(String id) {
+        return groupRepository.fetchUserGroups(id);
     }
 }

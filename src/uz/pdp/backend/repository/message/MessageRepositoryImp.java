@@ -44,10 +44,10 @@ public class MessageRepositoryImp implements MessageRepository {
     }
 
     @Override
-    public boolean update(String id, Message newE) {
+    public boolean update(Message message) {
         for (int i = 0; i < list.size(); i++) {
-            if (Objects.equals(list.get(i).getId(), id)) {
-                list.set(i, newE);
+            if (Objects.equals(list.get(i).getId(), message.getId())) {
+                list.set(i, message);
                 owr.writeObjects(list);
                 return true;
             }

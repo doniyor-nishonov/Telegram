@@ -91,7 +91,7 @@ public class ChatView {
         Message message = messageAll.get(index);
         String newMessage = inputStr("New Message");
         message.setText(newMessage);
-        boolean update = messageService.update(message.getId(), message);
+        boolean update = messageService.update(message);
         notificationMessage("Message", "edit", update);
     }
 

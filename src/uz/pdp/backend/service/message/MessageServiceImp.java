@@ -31,8 +31,8 @@ public class MessageServiceImp implements MessageService {
     }
 
     @Override
-    public boolean update(String id, Message newE) {
-        return messageRepository.update(id, newE);
+    public boolean update(Message newE) {
+        return messageRepository.update(newE);
     }
 
     @Override

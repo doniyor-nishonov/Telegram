@@ -6,7 +6,6 @@ import uz.pdp.backend.model.chat.Chat;
 
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class ChatRepositoryImp implements ChatRepository {
     private final List<Chat> list;
@@ -43,10 +42,10 @@ public class ChatRepositoryImp implements ChatRepository {
     }
 
     @Override
-    public boolean update(String id, Chat newChat) {
+    public boolean update(Chat chat) {
         for (int i = 0; i < list.size(); i++) {
-            if (Objects.equals(list.get(i).getId2(), id)) {
-                list.set(i, newChat);
+            if (Objects.equals(list.get(i).getId(), chat.getId())) {
+                list.set(i, chat);
                 owr.writeObjects(list);
                 return true;
             }

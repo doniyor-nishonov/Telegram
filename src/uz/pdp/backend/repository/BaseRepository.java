@@ -1,12 +1,14 @@
 package uz.pdp.backend.repository;
 
+import uz.pdp.backend.model.BaseModel;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public interface BaseRepository<E> {
+public interface BaseRepository<E extends BaseModel> {
     boolean add(E e);
     boolean delete(String id);
-    boolean update(String id,E newE);
+    boolean update(E newE);
     List<E> getAll();
     E get(String id);
 }

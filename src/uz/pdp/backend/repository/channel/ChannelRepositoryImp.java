@@ -49,11 +49,11 @@ public class ChannelRepositoryImp implements ChannelRepository{
     }
 
     @Override
-    public boolean update(String id, Channel newChannel) {
+    public boolean update(Channel channel) {
         for (int i = 0; i < list.size(); i++) {
             Channel ch = list.get(i);
-            if (Objects.equals(ch.getId(), id)) {
-                list.set(i, newChannel);
+            if (Objects.equals(ch.getId(), channel.getId())) {
+                list.set(i, channel);
                 owr.writeObjects(list);
                 return true;
             }
