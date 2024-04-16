@@ -1,6 +1,5 @@
 package uz.pdp.backend.service.member;
 
-import uz.pdp.backend.model.group.Group;
 import uz.pdp.backend.model.member.Member;
 import uz.pdp.backend.repository.members.MembersRepository;
 import uz.pdp.backend.repository.members.MembersRepositoryImp;

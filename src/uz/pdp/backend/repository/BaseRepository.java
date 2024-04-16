@@ -2,7 +2,6 @@ package uz.pdp.backend.repository;
 
 import uz.pdp.backend.model.BaseModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface BaseRepository<E extends BaseModel> {
