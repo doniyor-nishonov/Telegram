@@ -38,18 +38,6 @@ public class ChannelRepositoryImp implements ChannelRepository {
     }
 
     /**
-     * Retrieves a list of channels associated with the specified user ID.
-     * @param userId The ID of the user.
-     * @return A list of channels associated with the user.
-     */
-    @Override
-    public List<Channel> getChannelByUser(String userId) {
-        return list.stream()
-                .filter((channel)-> Objects.equals(channel.getOwnerId(),userId))
-                .collect(Collectors.toList());
-    }
-
-    /**
      * Adds a new channel to the repository.
      * @param channel The channel to add.
      * @return true if the channel is added successfully, false otherwise.

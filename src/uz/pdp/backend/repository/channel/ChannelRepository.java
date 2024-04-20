@@ -10,14 +10,6 @@ import java.util.List;
  * It extends the BaseRepository interface.
  */
 public interface ChannelRepository extends BaseRepository<Channel> {
-
-    /**
-     * Retrieves a list of channels associated with the specified user ID.
-     * @param userId The ID of the user.
-     * @return A list of channels associated with the user.
-     */
-    List<Channel> getChannelByUser(String userId);
-
     /**
      * Finds channels with the specified name.
      * @param name The name of the channel to search for.

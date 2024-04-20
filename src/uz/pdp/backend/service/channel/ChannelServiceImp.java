@@ -31,17 +31,6 @@ public class ChannelServiceImp implements ChannelService {
     }
 
     /**
-     * Retrieves a list of channels associated with a specific user.
-     *
-     * @param userId the ID of the user whose channels are to be retrieved
-     * @return a list of channels associated with the specified user
-     */
-    @Override
-    public List<Channel> getChannelByUser(String userId) {
-        return channelRepository.getChannelByUser(userId);
-    }
-
-    /**
      * Adds a new channel.
      *
      * @param channel the channel to add
