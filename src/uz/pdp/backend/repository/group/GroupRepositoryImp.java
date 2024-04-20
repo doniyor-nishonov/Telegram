@@ -1,28 +1,45 @@
 package uz.pdp.backend.repository.group;
 
-import uz.pdp.backend.io.ObjectWriterReader;
+import uz.pdp.backend.nio.ListFileHandler;
 import uz.pdp.backend.model.group.Group;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+/**
+ * The GroupRepositoryImp class implements the GroupRepository interface to provide methods for
+ * accessing and managing group data using file storage.
+ */
 public class GroupRepositoryImp implements GroupRepository {
-    private final List<Group> list;
-    private final String filePath = "db/groups.txt";
-    private final ObjectWriterReader<Group> owr = new ObjectWriterReader<>(filePath);
-    private static GroupRepository groupRepository;
 
+    private final List<Group> list; // The list of groups
+    private final String filePath = "db/groups.txt"; // The file path for storing group data
+    private final ListFileHandler<Group> owr = new ListFileHandler<>(filePath); // The file handler for reading and writing group data
+    private static GroupRepository groupRepository; // Singleton instance of GroupRepository
+
+    /**
+     * Returns a singleton instance of the GroupRepositoryImp class.
+     * @return The singleton instance of GroupRepositoryImp.
+     */
     public static GroupRepository getInstance() {
         if (Objects.isNull(groupRepository))
             groupRepository = new GroupRepositoryImp();
         return groupRepository;
     }
 
+    /**
+     * Constructs a new GroupRepositoryImp object and initializes the list of groups from the file.
+     */
     private GroupRepositoryImp() {
         list = owr.readObjects();
     }
 
+    /**
+     * Adds a new group to the repository.
+     * @param group The group to add.
+     * @return true if the group is added successfully, false otherwise.
+     */
     @Override
     public boolean add(Group group) {
         boolean match = list.stream().anyMatch(g -> Objects.equals(g.getName(), group.getName()));
@@ -33,6 +50,11 @@ public class GroupRepositoryImp implements GroupRepository {
         return true;
     }
 
+    /**
+     * Deletes a group from the repository.
+     * @param id The ID of the group to delete.
+     * @return true if the group is deleted successfully, false otherwise.
+     */
     @Override
     public boolean delete(String id) {
         boolean removed = list.removeIf(g -> Objects.equals(g.getId(), id));
@@ -41,6 +63,11 @@ public class GroupRepositoryImp implements GroupRepository {
         return removed;
     }
 
+    /**
+     * Updates an existing group in the repository.
+     * @param group The updated group object.
+     * @return true if the group is updated successfully, false otherwise.
+     */
     @Override
     public boolean update(Group group) {
         for (int i = 0; i < list.size(); i++) {
@@ -53,16 +80,30 @@ public class GroupRepositoryImp implements GroupRepository {
         return false;
     }
 
+    /**
+     * Retrieves all groups from the repository.
+     * @return A list of all groups in the repository.
+     */
     @Override
     public List<Group> getAll() {
         return list;
     }
 
+    /**
+     * Retrieves a group from the repository by its ID.
+     * @param id The ID of the group to retrieve.
+     * @return The group with the specified ID, or null if not found.
+     */
     @Override
     public Group get(String id) {
         return list.stream().filter((g) -> Objects.equals(g.getId(), id)).findFirst().orElse(null);
     }
 
+    /**
+     * Finds groups with the specified name.
+     * @param name The name of the group to search for.
+     * @return A list of groups with the specified name.
+     */
     @Override
     public List<Group> findByName(String name) {
         return list.stream()
@@ -70,6 +111,11 @@ public class GroupRepositoryImp implements GroupRepository {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Fetches groups associated with the specified user ID.
+     * @param id The ID of the user.
+     * @return A list of groups associated with the user.
+     */
     @Override
     public List<Group> fetchUserGroups(String id) {
         return list.stream().filter((g) -> Objects.equals(g.getUserId(), id)).collect(Collectors.toList());
