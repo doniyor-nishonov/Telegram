@@ -3,6 +3,8 @@ package uz.pdp.backend.repository.post;
 
 import uz.pdp.backend.nio.ListFileHandler;
 import uz.pdp.backend.model.post.Post;
+import uz.pdp.backend.nio.path.ChildPath;
+import uz.pdp.backend.nio.path.DirectoryPath;
 
 import java.util.List;
 import java.util.Objects;
@@ -15,8 +17,7 @@ import java.util.stream.Collectors;
 public class PostRepositoryImp implements PostRepository {
 
     private final List<Post> list;
-    private final String filePath = "db/posts.txt";
-    private final ListFileHandler<Post> owr = new ListFileHandler<>(filePath);
+    private final ListFileHandler<Post> owr = new ListFileHandler<>(DirectoryPath.DB, ChildPath.POSTS);
     private static PostRepository postRepository;
 
     /**

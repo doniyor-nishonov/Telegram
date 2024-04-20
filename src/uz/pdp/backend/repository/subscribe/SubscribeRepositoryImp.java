@@ -4,6 +4,8 @@ package uz.pdp.backend.repository.subscribe;
 import uz.pdp.backend.enums.Role;
 import uz.pdp.backend.nio.ListFileHandler;
 import uz.pdp.backend.model.subscribe.Subscribe;
+import uz.pdp.backend.nio.path.ChildPath;
+import uz.pdp.backend.nio.path.DirectoryPath;
 
 import java.util.List;
 import java.util.Objects;
@@ -15,8 +17,7 @@ import java.util.stream.Collectors;
 public class SubscribeRepositoryImp implements SubscribeRepository {
 
     private final List<Subscribe> list;
-    private final String filePath = "db/subscribes.txt";
-    private final ListFileHandler<Subscribe> owr = new ListFileHandler<>(filePath);
+    private final ListFileHandler<Subscribe> owr = new ListFileHandler<>(DirectoryPath.DB, ChildPath.SUBSCRIBE);
     private static SubscribeRepository subscribeRepository;
 
     /**

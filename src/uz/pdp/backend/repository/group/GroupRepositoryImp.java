@@ -2,6 +2,8 @@ package uz.pdp.backend.repository.group;
 
 import uz.pdp.backend.nio.ListFileHandler;
 import uz.pdp.backend.model.group.Group;
+import uz.pdp.backend.nio.path.ChildPath;
+import uz.pdp.backend.nio.path.DirectoryPath;
 
 import java.util.List;
 import java.util.Objects;
@@ -14,8 +16,7 @@ import java.util.stream.Collectors;
 public class GroupRepositoryImp implements GroupRepository {
 
     private final List<Group> list; // The list of groups
-    private final String filePath = "db/groups.txt"; // The file path for storing group data
-    private final ListFileHandler<Group> owr = new ListFileHandler<>(filePath); // The file handler for reading and writing group data
+    private final ListFileHandler<Group> owr = new ListFileHandler<>(DirectoryPath.DB, ChildPath.GROUPS); // The file handler for reading and writing group data
     private static GroupRepository groupRepository; // Singleton instance of GroupRepository
 
     /**

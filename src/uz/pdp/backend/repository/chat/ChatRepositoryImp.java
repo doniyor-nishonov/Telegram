@@ -3,6 +3,8 @@ package uz.pdp.backend.repository.chat;
 import uz.pdp.backend.enums.MessageType;
 import uz.pdp.backend.nio.ListFileHandler;
 import uz.pdp.backend.model.chat.Chat;
+import uz.pdp.backend.nio.path.ChildPath;
+import uz.pdp.backend.nio.path.DirectoryPath;
 
 import java.util.*;
 
@@ -13,8 +15,7 @@ import java.util.*;
 public class ChatRepositoryImp implements ChatRepository {
 
     private final List<Chat> list; // The list of chats
-    private final String filePath = "db/chats.txt"; // The file path for storing chat data
-    private final ListFileHandler<Chat> owr = new ListFileHandler<>(filePath); // The file handler for reading and writing chat data
+    private final ListFileHandler<Chat> owr = new ListFileHandler<>(DirectoryPath.DB, ChildPath.CHATS); // The file handler for reading and writing chat data
     private static ChatRepository chatRepository; // Singleton instance of ChatRepository
 
     /**

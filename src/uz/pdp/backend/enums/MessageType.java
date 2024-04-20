@@ -7,5 +7,5 @@ package uz.pdp.backend.enums;
 public enum MessageType {
 
     CHAT,  // Represents a message sent in a chat
-    GROUP; // Represents a message sent in a group
+    GROUP // Represents a message sent in a group
 }

@@ -3,6 +3,8 @@ package uz.pdp.backend.repository.members;
 import uz.pdp.backend.enums.Role;
 import uz.pdp.backend.nio.ListFileHandler;
 import uz.pdp.backend.model.member.Member;
+import uz.pdp.backend.nio.path.ChildPath;
+import uz.pdp.backend.nio.path.DirectoryPath;
 
 import java.util.List;
 import java.util.Objects;
@@ -15,8 +17,7 @@ import java.util.stream.Collectors;
 public class MembersRepositoryImp implements MembersRepository {
 
     private final List<Member> list; // The list of members
-    private final String filePath = "db/members.txt"; // The file path for storing member data
-    private final ListFileHandler<Member> owr = new ListFileHandler<>(filePath); // The file handler for reading and writing member data
+    private final ListFileHandler<Member> owr = new ListFileHandler<>(DirectoryPath.DB, ChildPath.MEMBER); // The file handler for reading and writing member data
     private static MembersRepository membersRepository; // Singleton instance of MembersRepository
 
     /**

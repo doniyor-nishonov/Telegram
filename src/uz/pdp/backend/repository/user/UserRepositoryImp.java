@@ -3,6 +3,8 @@ package uz.pdp.backend.repository.user;
 import uz.pdp.backend.DTO.LoginDTO;
 import uz.pdp.backend.nio.ListFileHandler;
 import uz.pdp.backend.model.user.User;
+import uz.pdp.backend.nio.path.ChildPath;
+import uz.pdp.backend.nio.path.DirectoryPath;
 
 import java.util.List;
 import java.util.Objects;
@@ -13,8 +15,7 @@ import java.util.Objects;
 public class UserRepositoryImp implements UserRepository {
 
     private final List<User> list;
-    private final String filePath = "db/users.txt";
-    private final ListFileHandler<User> owr = new ListFileHandler<>(filePath);
+    private final ListFileHandler<User> owr = new ListFileHandler<>(DirectoryPath.DB, ChildPath.USERS);
     private static UserRepository userRepository;
 
     /**

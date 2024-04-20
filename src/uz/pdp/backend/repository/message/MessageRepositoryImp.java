@@ -5,6 +5,8 @@ import uz.pdp.backend.enums.MessageType;
 import uz.pdp.backend.nio.ListFileHandler;
 import uz.pdp.backend.model.chat.Chat;
 import uz.pdp.backend.model.message.Message;
+import uz.pdp.backend.nio.path.ChildPath;
+import uz.pdp.backend.nio.path.DirectoryPath;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +19,7 @@ import java.util.stream.Collectors;
 public class MessageRepositoryImp implements MessageRepository {
 
     private final List<Message> list;
-    private final String filePath = "db/message.txt";
-    private final ListFileHandler<Message> owr = new ListFileHandler<>(filePath);
+    private final ListFileHandler<Message> owr = new ListFileHandler<>(DirectoryPath.DB, ChildPath.MESSAGE);
     private static MessageRepository messageRepository;
 
     /**

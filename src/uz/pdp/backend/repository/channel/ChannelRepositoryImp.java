@@ -3,6 +3,8 @@ package uz.pdp.backend.repository.channel;
 import uz.pdp.backend.enums.ChannelType;
 import uz.pdp.backend.nio.ListFileHandler;
 import uz.pdp.backend.model.channel.Channel;
+import uz.pdp.backend.nio.path.ChildPath;
+import uz.pdp.backend.nio.path.DirectoryPath;
 
 import java.util.List;
 import java.util.Objects;
@@ -15,8 +17,7 @@ import java.util.stream.Collectors;
 public class ChannelRepositoryImp implements ChannelRepository {
 
     private final List<Channel> list; // The list of channels
-    private final String filePath = "db/channels.txt"; // The file path for storing channel data
-    private final ListFileHandler<Channel> owr = new ListFileHandler<>(filePath); // The file handler for reading and writing channel data
+    private final ListFileHandler<Channel> owr = new ListFileHandler<>(DirectoryPath.DB, ChildPath.CHANNELS); // The file handler for reading and writing channel data
     private static ChannelRepository channelRepository; // Singleton instance of ChannelRepository
 
     /**

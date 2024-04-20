@@ -20,7 +20,7 @@ public class ListFileHandler<T> {
      * @param childPath The relative path of the file
      * @param dirPath   The directory path where the file is located
      */
-    public ListFileHandler(String childPath, String dirPath) {
+    public ListFileHandler(String dirPath,String childPath ) {
         this.childPath = childPath;
         this.dirPath = dirPath;
     }
