@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="edf081d5-a9a3-48a7-b4e4-3ac8935b8503" name="Changes" comment="Project updated">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/channels.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/channels.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/chats.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/chats.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/groups.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/groups.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/members.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/members.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/message.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/posts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/posts.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/users.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/BaseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/BaseModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/channel/Channel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/channel/Channel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/chat/Chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/group/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/group/Group.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/member/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/member/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/message/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/message/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/post/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/post/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/subscribe/Subscribe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/subscribe/Subscribe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/model/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/model/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uz/pdp/backend/repository/group/GroupRepositoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uz/pdp/backend/repository/group/GroupRepositoryImp.java" afterDir="false" />
-    </list>
+    <list default="true" id="edf081d5-a9a3-48a7-b4e4-3ac8935b8503" name="Changes" comment="Project updated" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -130,7 +110,7 @@
       <workItem from="1713636574889" duration="453000" />
       <workItem from="1713693847316" duration="5322000" />
       <workItem from="1713714812314" duration="1274000" />
-      <workItem from="1713766331869" duration="1238000" />
+      <workItem from="1713766331869" duration="1523000" />
     </task>
     <task id="LOCAL-00001" summary="Project updated">
       <option name="closed" value="true" />

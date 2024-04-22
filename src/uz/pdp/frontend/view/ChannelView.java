@@ -1,4 +1,4 @@
-package uz.pdp.frontend.view.channel;
+package uz.pdp.frontend.view;
 
 import uz.pdp.backend.enums.ChannelType;
 import uz.pdp.backend.enums.Role;

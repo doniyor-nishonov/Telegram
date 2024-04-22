@@ -9,7 +9,7 @@ import java.util.Objects;
 
 import static uz.pdp.frontend.ui.UI.curUser;
 import static uz.pdp.frontend.utils.Utils.*;
-import static uz.pdp.frontend.view.user.UserView.*;
+import static uz.pdp.frontend.view.UserView.*;
 
 public class LoginView {
     private static final UserService userService = UserServiceImp.getInstance();

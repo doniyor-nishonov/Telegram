@@ -1,10 +1,10 @@
-package uz.pdp.frontend.view.user;
+package uz.pdp.frontend.view;
 
 import static uz.pdp.frontend.utils.MenuUtils.*;
 import static uz.pdp.frontend.utils.Utils.*;
-import static uz.pdp.frontend.view.channel.ChannelView.*;
-import static uz.pdp.frontend.view.chat.ChatView.*;
-import static uz.pdp.frontend.view.group.GroupView.*;
+import static uz.pdp.frontend.view.ChannelView.*;
+import static uz.pdp.frontend.view.ChatView.*;
+import static uz.pdp.frontend.view.GroupView.*;
 
 public class UserView {
     public static void userProfile() {

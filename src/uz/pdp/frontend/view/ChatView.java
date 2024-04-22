@@ -1,4 +1,4 @@
-package uz.pdp.frontend.view.chat;
+package uz.pdp.frontend.view;
 
 import uz.pdp.backend.enums.MessageType;
 import uz.pdp.backend.model.chat.Chat;

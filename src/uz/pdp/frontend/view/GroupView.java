@@ -1,4 +1,4 @@
-package uz.pdp.frontend.view.group;
+package uz.pdp.frontend.view;
 
 import uz.pdp.backend.enums.MessageType;
 import uz.pdp.backend.enums.Role;
@@ -25,7 +25,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static uz.pdp.frontend.utils.MenuUtils.*;
 import static uz.pdp.frontend.utils.Utils.*;
 import static uz.pdp.frontend.ui.UI.*;
-import static uz.pdp.frontend.view.chat.ChatView.chatMessage;
+import static uz.pdp.frontend.view.ChatView.chatMessage;
 
 public class GroupView {
     private static final GroupService groupService = GroupServiceImp.getInstance();
