@@ -9,9 +9,9 @@ import uz.pdp.backend.model.BaseModel;
  */
 public class Chat extends BaseModel {
 
-    private final String id1; // The ID of the first participant in the chat
-    private final String id2; // The ID of the second participant in the chat
-    private final MessageType type; // The type of the chat message
+    private  String id1; // The ID of the first participant in the chat
+    private  String id2; // The ID of the second participant in the chat
+    private  MessageType type; // The type of the chat message
 
     /**
      * Constructs a new Chat object with the specified participant IDs and message type.

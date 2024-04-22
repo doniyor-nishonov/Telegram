@@ -10,8 +10,8 @@ import uz.pdp.backend.model.BaseModel;
 public class Channel extends BaseModel {
 
     private String name; // The name of the channel
-    private final String ownerId; // The ID of the owner of the channel
-    private final ChannelType channelType; // The type of the channel
+    private String ownerId; // The ID of the owner of the channel
+    private ChannelType channelType; // The type of the channel
 
     /**
      * Constructs a new Channel object with the specified name, owner ID, and channel type.

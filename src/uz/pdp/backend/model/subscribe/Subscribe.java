@@ -9,8 +9,8 @@ import uz.pdp.backend.model.BaseModel;
  */
 public class Subscribe extends BaseModel {
 
-    private final String userId; // The ID of the user who is subscribing
-    private final String channelId; // The ID of the channel being subscribed to
+    private String userId; // The ID of the user who is subscribing
+    private String channelId; // The ID of the channel being subscribed to
     private Role role; // The role of the user within the channel
 
     /**

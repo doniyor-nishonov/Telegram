@@ -9,7 +9,7 @@ import uz.pdp.backend.model.BaseModel;
 public class Group extends BaseModel {
 
     private String name; // The name of the group
-    private final String userId; // The ID of the user who owns the group
+    private String userId; // The ID of the user who owns the group
 
     /**
      * Constructs a new Group object with the specified user ID and group name.

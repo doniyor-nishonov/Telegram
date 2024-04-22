@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 public class Post extends BaseModel {
 
     private String title; // The title of the post
-    private final String channelId; // The ID of the channel the post belongs to
+    private String channelId; // The ID of the channel the post belongs to
 
     /**
      * Constructs a new Post object with the specified title and channel ID.

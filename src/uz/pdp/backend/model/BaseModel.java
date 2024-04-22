@@ -10,8 +10,8 @@ import java.util.UUID;
  */
 public abstract class BaseModel implements Serializable {
 
-    private final String id; // The unique identifier for the model object
-    private final LocalDateTime createdAt; // The timestamp when the model object was created
+    private  String id; // The unique identifier for the model object
+    private  LocalDateTime createdAt; // The timestamp when the model object was created
 
     /**
      * Constructs a new BaseModel object with a generated unique ID and creation timestamp.

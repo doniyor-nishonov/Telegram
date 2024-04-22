@@ -9,8 +9,8 @@ import uz.pdp.backend.model.BaseModel;
  */
 public class Member extends BaseModel {
     
-    private final String userId; // The ID of the user who is a member
-    private final String groupId; // The ID of the group the user is a member of
+    private String userId; // The ID of the user who is a member
+    private String groupId; // The ID of the group the user is a member of
     private Role role; // The role of the member within the group
 
     /**

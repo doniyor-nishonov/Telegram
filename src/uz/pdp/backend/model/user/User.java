@@ -11,8 +11,8 @@ import java.util.Objects;
 public class User extends BaseModel {
 
     private String name; // The name of the user
-    private final String userName; // The username of the user
-    private final String password; // The password of the user
+    private String userName; // The username of the user
+    private String password; // The password of the user
 
     /**
      * Constructs a new User object with the specified name, username, and password.

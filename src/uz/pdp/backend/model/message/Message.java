@@ -12,10 +12,10 @@ import java.time.format.DateTimeFormatter;
 public class Message extends BaseModel {
 
     private String text; // The text content of the message
-    private final String senderId; // The ID of the sender of the message
-    private final String chatId; // The ID of the chat the message belongs to
+    private String senderId; // The ID of the sender of the message
+    private String chatId; // The ID of the chat the message belongs to
     private boolean state; // The state of the message (read/unread)
-    private final MessageType type; // The type of the message
+    private MessageType type; // The type of the message
 
     /**
      * Constructs a new Message object with the specified text, sender ID, chat ID, and message type.
