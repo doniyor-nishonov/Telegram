@@ -128,7 +128,7 @@ public class ChatView {
                 System.out.printf("""
                         %s
                         %s
-                        %n""", message.getText(), message.getCreatedAt().format(DateTimeFormatter.ofPattern("HH:mm")));
+                        %n""", message.getText(), message.getTime().format(DateTimeFormatter.ofPattern("HH:mm")));
         }
     }
 

@@ -11,14 +11,14 @@ import java.util.UUID;
 public abstract class BaseModel implements Serializable {
 
     private  String id; // The unique identifier for the model object
-    private  LocalDateTime createdAt; // The timestamp when the model object was created
+    private  LocalDateTime time; // The timestamp when the model object was created
 
     /**
      * Constructs a new BaseModel object with a generated unique ID and creation timestamp.
      */
     public BaseModel() {
         this.id = UUID.randomUUID().toString(); // Generates a unique ID
-        this.createdAt = LocalDateTime.now(); // Sets the creation timestamp to the current time
+        this.time = LocalDateTime.now(); // Sets the creation timestamp to the current time
     }
 
     /**
@@ -33,7 +33,7 @@ public abstract class BaseModel implements Serializable {
      * Returns the timestamp when the model object was created.
      * @return The creation timestamp.
      */
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public LocalDateTime getTime() {
+        return time;
     }
 }

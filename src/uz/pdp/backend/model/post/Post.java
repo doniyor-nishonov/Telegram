@@ -48,6 +48,6 @@ public class Post extends BaseModel {
         return """
                 %s
                 %s
-                """.formatted(title, super.getCreatedAt().format(DateTimeFormatter.ofPattern("HH:mm")));
+                """.formatted(title, super.getTime().format(DateTimeFormatter.ofPattern("HH:mm")));
     }
 }

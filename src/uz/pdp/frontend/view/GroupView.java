@@ -340,7 +340,7 @@ public class GroupView {
                                 %s
                                 %s
                                 %n""", userService.get(chat.getId1()).getName()
-                        , message.getText(), message.getCreatedAt().format(DateTimeFormatter.ofPattern("HH:mm")));
+                        , message.getText(), message.getTime().format(DateTimeFormatter.ofPattern("HH:mm")));
         }
     }
 

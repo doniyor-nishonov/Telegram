@@ -88,8 +88,8 @@ public class Message extends BaseModel {
      */
     @Override
     public String toString() {
-        String s = state ? "**" : "*"; // Sets a visual indicator for read/unread messages
-        String time = super.getCreatedAt().format(DateTimeFormatter.ofPattern("HH:mm")); // Formats the creation time
+        String s = state ? "✔✔" : "✔"; // Sets a visual indicator for read/unread messages
+        String time = super.getTime().format(DateTimeFormatter.ofPattern("HH:mm")); // Formats the creation time
         return """
                 %s%s
                                     %s
